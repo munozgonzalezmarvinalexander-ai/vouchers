@@ -57,8 +57,9 @@ export const libroExcelUrl = (filtros = {}) =>
 //  - imprimir: muestra el voucher y abre el diálogo de impresión (no descarga).
 //  - pdf / excel: descargan el archivo.
 export const docUrls = (id) => ({
-  imprimir: `${BASE}/vouchers/${id}/html?imprimir=1`,
-  vistaPrevia: `${BASE}/vouchers/${id}/html`,
-  pdf: `${BASE}/vouchers/${id}/pdf?descargar=1`,
+  imprimirMedio: `${BASE}/vouchers/${id}/html?imprimir=1&formato=medio`,
+  imprimirTercio: `${BASE}/vouchers/${id}/html?imprimir=1&formato=tercio`,
+  vistaPrevia: `${BASE}/vouchers/${id}/html?formato=medio`,
+  pdf: `${BASE}/vouchers/${id}/pdf?descargar=1&formato=medio`,
   excel: `${BASE}/vouchers/${id}/excel`,
 })

@@ -197,12 +197,20 @@ export default function VoucherForm() {
       {editando && (
         <div className="flex flex-wrap gap-2">
           <a
-            href={docUrls(id).imprimir}
+            href={docUrls(id).imprimirMedio}
             target="_blank"
             rel="noreferrer"
             className="rounded-md border border-brand px-3 py-1.5 text-sm text-brand-700 hover:bg-brand-50"
           >
-            Imprimir
+            Imprimir ½ hoja
+          </a>
+          <a
+            href={docUrls(id).imprimirTercio}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-md border border-brand px-3 py-1.5 text-sm text-brand-700 hover:bg-brand-50"
+          >
+            Imprimir ⅓ hoja
           </a>
           <a
             href={docUrls(id).pdf}

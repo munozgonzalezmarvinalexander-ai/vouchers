@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía de despliegue — Sistema de Vouchers</title>
+<style>
+  :root { --brand:#1b5e9c; --ink:#1f2937; --muted:#6b7280; --line:#e5e7eb; --bg:#f6f8fc; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+         line-height:1.6; }
+  .wrap { max-width:820px; margin:0 auto; padding:48px 24px 80px; background:#fff;
+          min-height:100vh; box-shadow:0 0 0 1px var(--line); }
+  h1 { font-size:28px; line-height:1.25; margin:0 0 4px; letter-spacing:-.01em; }
+  h2 { font-size:20px; margin:38px 0 12px; padding-top:18px; border-top:1px solid var(--line); color:var(--brand); }
+  h3 { font-size:16px; margin:24px 0 8px; }
+  p, li { font-size:15px; }
+  a { color:var(--brand); }
+  code { background:#eef2f7; padding:.12em .4em; border-radius:4px; font-size:.88em;
+         font-family:"SF Mono",Menlo,Consolas,monospace; }
+  pre { background:#0f172a; color:#e2e8f0; padding:16px 18px; border-radius:10px; overflow:auto;
+        font-size:13px; line-height:1.5; }
+  pre code { background:transparent; padding:0; color:inherit; }
+  blockquote { margin:16px 0; padding:10px 16px; background:#f0f6ff; border-left:4px solid var(--brand);
+               border-radius:0 8px 8px 0; color:#334155; }
+  blockquote p { margin:.3em 0; }
+  table { border-collapse:collapse; width:100%; margin:16px 0; font-size:14px; }
+  th, td { border:1px solid var(--line); padding:8px 12px; text-align:left; }
+  th { background:#f1f5f9; }
+  hr { border:none; border-top:1px solid var(--line); margin:28px 0; }
+  ul, ol { padding-left:22px; }
+  li { margin:.25em 0; }
+  @media print { body{background:#fff;} .wrap{box-shadow:none; max-width:none; padding:0;} h2{border-color:#ccc;} }
+</style>
+</head>
+<body>
+  <div class="wrap">
+<h1 id="guia-de-despliegue-sistema-de-vouchers-contables">Guía de despliegue — Sistema de Vouchers Contables</h1>
+<p>Esta guía te lleva, paso a paso, de las carpetas de código a un sistema en línea
+que las 5 computadoras usan abriendo <strong>una sola URL</strong>, sin instalar nada en
+ellas y compartiendo la misma base de datos. Todo con planes <strong>gratuitos</strong>.</p>
+<p>Tiempo estimado la primera vez: 30–40 minutos.</p>
+<hr />
+<h2 id="panorama-las-tres-piezas">Panorama: las tres piezas</h2>
+<pre><code>[5 computadoras]
+   │  (solo abren el navegador en una URL)
+   ▼
+[Frontend en Vercel]  ──HTTPS──►  [Backend (API) en Render]  ──SQL──►  [Base de datos en Neon]
+   la pantalla                       la lógica + PDF/Excel               donde viven los datos
+</code></pre>
+<ul>
+<li><strong>Base de datos (Neon, PostgreSQL):</strong> el lugar único y compartido donde se
+  guardan los vouchers. Que sea uno solo es lo que permite que las 5 computadoras
+  vean lo mismo.</li>
+<li><strong>Backend (Render, con Docker):</strong> la API que ya construimos. Aquí corren las
+  reglas (cuadre, numeración, estados) y se generan el PDF y el Excel.</li>
+<li><strong>Frontend (Vercel):</strong> la interfaz. Es la URL que abren las computadoras.</li>
+</ul>
+<p>Las computadoras <strong>no instalan nada</strong>: solo necesitan navegador e internet.</p>
+<h3 id="antes-de-empezar">Antes de empezar</h3>
+<ul>
+<li>Una cuenta de <strong>GitHub</strong>.</li>
+<li>Este paquete de código (las carpetas <code>backend/</code> y <code>frontend/</code>).</li>
+</ul>
+<hr />
+<h2 id="paso-1-subir-el-codigo-a-github">Paso 1 — Subir el código a GitHub</h2>
+<p>Desde la carpeta que contiene <code>backend/</code> y <code>frontend/</code>:</p>
+<pre><code class="language-bash">git init
+git add .
+git commit -m &quot;Sistema de vouchers&quot;
+git branch -M main
+git remote add origin https://github.com/TU-USUARIO/vouchers.git
+git push -u origin main
+</code></pre>
+<p>(Primero crea el repositorio vacío en github.com → New repository, y usa esa URL.)</p>
+<blockquote>
+<p>Un solo repositorio con las dos carpetas dentro. Más adelante le dirás a Render
+que use <code>backend/</code> y a Vercel que use <code>frontend/</code>.</p>
+</blockquote>
+<hr />
+<h2 id="paso-2-crear-la-base-de-datos-en-neon">Paso 2 — Crear la base de datos en Neon</h2>
+<ol>
+<li>Entra a <strong>neon.tech</strong> y crea una cuenta (gratis, <strong>sin tarjeta</strong>).</li>
+<li><strong>New Project</strong>. Ponle nombre (ej. <code>vouchers</code>) y elige una región cercana
+   (por ejemplo <em>US East</em>).</li>
+<li>Al crearlo, Neon te muestra la <strong>Connection string</strong>. Es algo así:</li>
+</ol>
+<p><code>postgresql://usuario:password@ep-xxxx-xxxx.us-east-2.aws.neon.tech/vouchers?sslmode=require</code></p>
+<ol>
+<li><strong>Cópiala y guárdala.</strong> Será tu <code>DATABASE_URL</code>.</li>
+</ol>
+<blockquote>
+<p>Neon en plan gratis “se duerme” cuando no hay uso; el primer pedido la despierta
+en menos de un segundo. Para 5 computadoras es más que suficiente.</p>
+</blockquote>
+<hr />
+<h2 id="paso-3-desplegar-el-backend-en-render">Paso 3 — Desplegar el backend en Render</h2>
+<ol>
+<li>Entra a <strong>render.com</strong> y crea cuenta (puedes usar tu GitHub).</li>
+<li><strong>New + → Web Service</strong> y conecta tu repositorio.</li>
+<li>Configura:</li>
+<li><strong>Root Directory:</strong> <code>backend</code></li>
+<li><strong>Language / Runtime:</strong> <em>Docker</em> (Render detecta el <code>Dockerfile</code> que ya viene incluido)</li>
+<li><strong>Instance Type:</strong> <em>Free</em></li>
+<li>En <strong>Environment</strong> agrega una variable:</li>
+<li><code>DATABASE_URL</code> = <em>(la cadena de Neon del paso 2)</em></li>
+</ol>
+<p>(La variable <code>CORS_ORIGINS</code> la pondremos en el Paso 6, cuando ya tengamos la
+   URL del frontend.)
+5. <strong>Create Web Service</strong> y espera a que termine el build (instala las librerías
+   del sistema para el PDF y las dependencias de Python).
+6. Al terminar, copia la <strong>URL del backend</strong> (ej. <code>https://vouchers-api.onrender.com</code>)
+   y ábrela en el navegador. Debe responder:</p>
+<p><code>json
+   {"mensaje": "API de Vouchers en línea", "docs": "/docs"}</code></p>
+<p>Si agregas <code>/docs</code> a esa URL, verás la documentación interactiva de la API.</p>
+<blockquote>
+<p>Al arrancar, la app <strong>crea las tablas solas</strong> en Neon. Falta cargar el catálogo:
+eso es el siguiente paso.</p>
+</blockquote>
+<hr />
+<h2 id="paso-4-cargar-el-catalogo-una-sola-vez">Paso 4 — Cargar el catálogo (una sola vez)</h2>
+<p>El catálogo de cuentas y los proyectos se cargan con <code>scripts/seed.py</code>
+(es <strong>idempotente</strong>: puedes correrlo las veces que quieras sin duplicar nada).</p>
+<p><strong>Opción A — desde Render (recomendada):</strong>
+1. En tu servicio de Render, abre la pestaña <strong>Shell</strong>.
+2. Ejecuta:
+   <code>bash
+   python scripts/seed.py</code>
+   Como <code>DATABASE_URL</code> ya está en el entorno, carga directo en Neon. Verás cuántas
+   cuentas, proyectos y firmantes se sembraron.</p>
+<p><strong>Opción B — desde tu computadora:</strong>
+1. En <code>backend/</code>, crea un archivo <code>.env</code> con <code>DATABASE_URL=</code> <em>(la de Neon)</em>.
+2. <code>bash
+   pip install -r requirements.txt
+   python scripts/seed.py</code></p>
+<hr />
+<h2 id="paso-5-desplegar-el-frontend-en-vercel">Paso 5 — Desplegar el frontend en Vercel</h2>
+<ol>
+<li>Entra a <strong>vercel.com</strong> y crea cuenta con GitHub.</li>
+<li><strong>Add New → Project</strong> e importa el mismo repositorio.</li>
+<li>Configura:</li>
+<li><strong>Root Directory:</strong> <code>frontend</code></li>
+<li><strong>Framework Preset:</strong> <em>Vite</em> (lo detecta solo)</li>
+<li><strong>Build Command / Output:</strong> déjalos por defecto (<code>npm run build</code> → <code>dist</code>)</li>
+<li>En <strong>Environment Variables</strong> agrega:</li>
+<li>
+<p><code>VITE_API_URL</code> = <em>(la URL del backend de Render, sin barra al final)</em></p>
+<p>Ej. <code>https://vouchers-api.onrender.com</code>
+5. <strong>Deploy.</strong> Al terminar, copia la <strong>URL del frontend</strong>
+   (ej. <code>https://vouchers.vercel.app</code>). <strong>Esta es la URL que abrirán las 5
+   computadoras.</strong></p>
+</li>
+</ol>
+<hr />
+<h2 id="paso-6-conectar-el-frontend-con-el-backend-cors">Paso 6 — Conectar el frontend con el backend (CORS)</h2>
+<p>Por seguridad, el backend solo acepta peticiones de los dominios que autorices.</p>
+<ol>
+<li>Vuelve a <strong>Render → tu servicio → Environment</strong>.</li>
+<li>Agrega la variable:</li>
+<li><code>CORS_ORIGINS</code> = <em>(la URL de Vercel)</em> — ej. <code>https://vouchers.vercel.app</code></li>
+<li>Guarda. Render redepliega solo en un minuto.</li>
+</ol>
+<p>Listo: el frontend ya puede comunicarse con la API.</p>
+<hr />
+<h2 id="paso-7-usar-el-sistema-en-las-5-computadoras">Paso 7 — Usar el sistema en las 5 computadoras</h2>
+<p>En cada computadora, abre el navegador en la <strong>URL de Vercel</strong>. Nada más.</p>
+<ul>
+<li>Todas ven y editan <strong>los mismos datos</strong> (la misma base en Neon).</li>
+<li>Pueden crear vouchers, numerarlos, revisarlos/autorizarlos, <strong>imprimir</strong>,
+  descargar PDF/Excel y ver reportes.</li>
+<li>Tip: guarda la URL como marcador o acceso directo en el escritorio.</li>
+</ul>
+<hr />
+<h2 id="notas-utiles">Notas útiles</h2>
+<ul>
+<li><strong>Imprimir sin descargar:</strong> el botón <em>Imprimir</em> abre el voucher y manda al
+  diálogo de impresión; no genera ningún archivo.</li>
+<li><strong>PDF:</strong> funciona en el servidor gracias al <code>Dockerfile</code> (no instalas nada en
+  Windows). El <em>Imprimir</em> y el <em>Excel</em> no dependen de eso.</li>
+<li><strong>Primer acceso lento:</strong> tanto Neon como el plan gratis de Render “se duermen”
+  tras un rato sin uso; el primer acceso del día puede tardar algunos segundos en
+  despertar. Después va normal. Si quieres que el backend esté siempre despierto,
+  es el único punto que podría justificar un plan de pago modesto (o un “ping”
+  automático cada pocos minutos).</li>
+<li><strong>Respaldo:</strong> puedes exportar el libro de vouchers a Excel cuando quieras
+  (Reportes → <em>Descargar libro</em>).</li>
+<li><strong>Sin inicio de sesión:</strong> por decisión, no hay login; cualquiera con la URL
+  puede entrar. La auditoría registra las acciones como “sistema”. Si en el
+  futuro hace falta, se agrega esa etapa.</li>
+</ul>
+<hr />
+<h2 id="si-algo-falla-errores-comunes">Si algo falla (errores comunes)</h2>
+<ul>
+<li><strong>El frontend dice “Failed to fetch” o error de CORS:</strong> revisa que
+  <code>CORS_ORIGINS</code> en Render sea <strong>exactamente</strong> la URL de Vercel (sin barra al
+  final) y que el backend haya redeployado.</li>
+<li><strong>Al pedir PDF responde 503:</strong> el backend no se desplegó con Docker. Asegúrate
+  de que el <em>Runtime</em> en Render sea <strong>Docker</strong> (no el Python por defecto).</li>
+<li><strong>No aparecen cuentas/proyectos:</strong> falta correr el seed (Paso 4).</li>
+<li><strong><code>VITE_API_URL</code> no toma efecto:</strong> Vite la incrusta al construir; si la cambias,
+  vuelve a hacer <em>Redeploy</em> en Vercel.</li>
+</ul>
+<hr />
+<h2 id="resumen-de-variables-de-entorno">Resumen de variables de entorno</h2>
+<table>
+<thead>
+<tr>
+<th>Dónde</th>
+<th>Variable</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backend (Render)</td>
+<td><code>DATABASE_URL</code></td>
+<td>Cadena de conexión de Neon</td>
+</tr>
+<tr>
+<td>Backend (Render)</td>
+<td><code>CORS_ORIGINS</code></td>
+<td>URL del frontend (Vercel)</td>
+</tr>
+<tr>
+<td>Frontend (Vercel)</td>
+<td><code>VITE_API_URL</code></td>
+<td>URL del backend (Render), sin barra al final</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="correr-todo-localmente-opcional-para-probar-antes-de-subir">Correr todo localmente (opcional, para probar antes de subir)</h2>
+<p><strong>Backend</strong> (sin <code>DATABASE_URL</code> usa SQLite, cero configuración):</p>
+<pre><code class="language-bash">cd backend
+pip install -r requirements.txt
+python scripts/seed.py
+uvicorn app.main:app --reload
+# API en http://localhost:8000  ·  documentación en http://localhost:8000/docs
+</code></pre>
+<p><strong>Frontend:</strong></p>
+<pre><code class="language-bash">cd frontend
+npm install
+npm run dev
+# Pantalla en http://localhost:5173
+</code></pre>
+  </div>
+</body>
+</html>

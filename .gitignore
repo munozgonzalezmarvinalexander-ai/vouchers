@@ -1,12 +1,8 @@
-# Python
 __pycache__/
 *.pyc
 .pytest_cache/
-# Entorno y base local
 .env
 *.db
-# Node / build
 node_modules/
 dist/
-# Sistema
 .DS_Store

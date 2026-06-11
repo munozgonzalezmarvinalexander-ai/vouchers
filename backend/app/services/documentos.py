@@ -29,28 +29,30 @@ _env = Environment(
 ORG = "CONACMI"
 
 
+# Dónde empieza el voucher desde el borde superior de la hoja carta.
+# El comprobante del banco va arriba; el voucher cae en la parte de abajo.
+TOPS = {"medio": "130mm", "tercio": "168mm"}
+
+
 def _money(valor) -> str:
     """Formatea un monto; cadena vacía si es cero (para no ensuciar el voucher)."""
     n = float(valor or 0)
     return f"{n:,.2f}" if n else ""
 
 
-def _contexto(voucher, auto_print=False) -> dict:
+def _contexto(voucher, auto_print=False, formato="medio") -> dict:
     lineas = [
         {
             "codigo": d.cuenta.codigo if d.cuenta else "",
             "descripcion": d.descripcion or (d.cuenta.nombre if d.cuenta else ""),
             "debe": _money(d.debe),
             "haber": _money(d.haber),
+            "es_banco": bool(d.cuenta.es_banco) if d.cuenta else False,
         }
         for d in voucher.detalles
     ]
     return {
-        "org": ORG,
-        "numero": voucher.numero,
-        "fecha": str(voucher.fecha),
-        "estado": voucher.estado.lower(),
-        "proyecto": voucher.proyecto.nombre if voucher.proyecto else "",
+        "numero": voucher.numero,  # solo para el <title> de la pestaña
         "concepto": voucher.concepto,
         "lineas": lineas,
         "total_debe": _money(voucher.total_debe),
@@ -59,15 +61,16 @@ def _contexto(voucher, auto_print=False) -> dict:
         "revisado": voucher.revisado_por.nombre if voucher.revisado_por else "",
         "autorizado": voucher.autorizado_por.nombre if voucher.autorizado_por else "",
         "auto_print": auto_print,
+        "top": TOPS.get(formato, TOPS["medio"]),
     }
 
 
-def render_html(voucher, auto_print: bool = False) -> str:
-    return _env.get_template("voucher.html").render(**_contexto(voucher, auto_print))
+def render_html(voucher, auto_print: bool = False, formato: str = "medio") -> str:
+    return _env.get_template("voucher.html").render(**_contexto(voucher, auto_print, formato))
 
 
-def render_pdf(voucher) -> bytes:
-    html = render_html(voucher, auto_print=False)
+def render_pdf(voucher, formato: str = "medio") -> bytes:
+    html = render_html(voucher, auto_print=False, formato=formato)
     try:
         from weasyprint import HTML  # import perezoso (ver nota arriba)
     except Exception as e:  # noqa: BLE001

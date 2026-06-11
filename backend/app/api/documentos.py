@@ -28,17 +28,18 @@ def _voucher(db: Session, voucher_id: int) -> Voucher:
 
 
 @router.get("/{voucher_id}/html", response_class=HTMLResponse)
-def voucher_html(voucher_id: int, imprimir: bool = False, db: Session = Depends(get_db)):
-    """Vista imprimible. Con ?imprimir=1 dispara la impresión del navegador."""
+def voucher_html(voucher_id: int, imprimir: bool = False, formato: str = "medio", db: Session = Depends(get_db)):
+    """Vista imprimible. Con ?imprimir=1 dispara la impresión del navegador.
+    formato = medio (mitad inferior) | tercio (tercio inferior)."""
     v = _voucher(db, voucher_id)
-    return HTMLResponse(doc.render_html(v, auto_print=imprimir))
+    return HTMLResponse(doc.render_html(v, auto_print=imprimir, formato=formato))
 
 
 @router.get("/{voucher_id}/pdf")
-def voucher_pdf(voucher_id: int, descargar: bool = False, db: Session = Depends(get_db)):
+def voucher_pdf(voucher_id: int, descargar: bool = False, formato: str = "medio", db: Session = Depends(get_db)):
     v = _voucher(db, voucher_id)
     try:
-        pdf = doc.render_pdf(v)
+        pdf = doc.render_pdf(v, formato=formato)
     except RuntimeError as e:
         raise HTTPException(503, str(e))
     disposicion = "attachment" if descargar else "inline"

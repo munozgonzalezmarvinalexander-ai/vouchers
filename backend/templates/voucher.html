@@ -4,92 +4,58 @@
 <meta charset="utf-8">
 <title>Voucher {{ numero }}</title>
 <style>
-  @page { size: A4 portrait; margin: 2.2cm 2cm; }
+  /* Hoja carta. Margen 0: controlamos toda la posición con padding/margin en mm,
+     para que el voucher caiga en la parte de ABAJO (arriba va el comprobante del banco). */
+  @page { size: 216mm 279mm; margin: 0; }
   * { box-sizing: border-box; }
-  body { font-family: Arial, Helvetica, sans-serif; color: #111827; font-size: 12px; margin: 0; }
+  body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: #1f3a73; font-size: 11px; }
 
-  .encabezado {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    border-bottom: 2px solid #111827; padding-bottom: 8px; margin-bottom: 18px;
-  }
-  .org { font-size: 16px; font-weight: bold; letter-spacing: .5px; }
-  .org small { display: block; font-size: 10px; font-weight: normal; color: #6b7280; letter-spacing: 0; }
-  .meta { text-align: right; font-size: 11px; }
-  .meta .num { font-family: 'Courier New', monospace; font-size: 13px; font-weight: bold; }
-  .meta .estado { text-transform: capitalize; color: #6b7280; }
+  /* 'top' define dónde empieza el voucher desde el borde superior:
+       medio  -> mitad inferior      tercio -> tercio inferior */
+  .voucher { padding: 0 18mm; margin-top: {{ top }}; }
 
-  .concepto { margin: 0 0 18px; }
-  .concepto .et { font-size: 10px; color: #6b7280; text-transform: uppercase; letter-spacing: .5px; }
+  .concepto { text-align: center; line-height: 1.5; margin: 0 0 9mm; padding: 0 6mm; }
 
-  table { width: 100%; border-collapse: collapse; }
-  thead th {
-    font-size: 10px; text-transform: uppercase; letter-spacing: .4px; color: #6b7280;
-    text-align: left; border-bottom: 1px solid #9ca3af; padding: 6px 4px;
-  }
-  thead th.num, td.num { text-align: right; }
-  tbody td { padding: 6px 4px; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
-  td.cod { font-family: 'Courier New', monospace; font-size: 11px; color: #374151; white-space: nowrap; }
-  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
-  tfoot td { padding: 8px 4px; font-weight: bold; border-top: 2px solid #111827; }
-  tfoot td.num { font-variant-numeric: tabular-nums; text-align: right; }
-  tfoot td.et { text-align: right; text-transform: uppercase; font-size: 10px; color: #6b7280; font-weight: normal; }
+  table.lineas { width: 100%; border-collapse: collapse; }
+  table.lineas td { padding: 1.5px 0; vertical-align: top; }
+  td.cod { width: 20mm; white-space: nowrap; }
+  td.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  td.debe, td.haber { width: 24mm; }
+  tr.banco td { padding-top: 7mm; }
+  tr.totales td { padding-top: 6mm; font-weight: bold; }
 
-  .firmas { display: flex; justify-content: space-between; margin-top: 70px; }
+  .firmas { display: flex; justify-content: space-between; margin-top: 14mm; padding: 0 4mm; }
   .firma { width: 30%; text-align: center; }
-  .firma .linea { border-top: 1px solid #111827; margin-bottom: 4px; height: 1px; }
-  .firma .nombre { font-weight: bold; }
-  .firma .rol { font-size: 10px; color: #6b7280; }
+  .firma .rol { font-weight: bold; }
+  .firma .linea { border-top: 1px solid #1f3a73; margin: 11mm 4mm 2mm; height: 1px; }
 </style>
 {% if auto_print %}<script>window.addEventListener('load', function () { window.print(); });</script>{% endif %}
 </head>
 <body>
-  <div class="encabezado">
-    <div class="org">{{ org }}<small>Voucher contable · {{ proyecto }}</small></div>
-    <div class="meta">
-      <div class="num">{{ numero }}</div>
-      <div>{{ fecha }}</div>
-      <div class="estado">{{ estado }}</div>
-    </div>
-  </div>
+  <div class="voucher">
+    <div class="concepto">{{ concepto }}</div>
 
-  <div class="concepto">
-    <div class="et">Concepto</div>
-    <div>{{ concepto }}</div>
-  </div>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Código</th>
-        <th>Descripción</th>
-        <th class="num">Debe</th>
-        <th class="num">Haber</th>
-      </tr>
-    </thead>
-    <tbody>
+    <table class="lineas">
       {% for l in lineas %}
-      <tr>
+      <tr{% if l.es_banco %} class="banco"{% endif %}>
         <td class="cod">{{ l.codigo }}</td>
-        <td>{{ l.descripcion }}</td>
-        <td class="num">{{ l.debe }}</td>
-        <td class="num">{{ l.haber }}</td>
+        <td class="desc">{{ l.descripcion }}</td>
+        <td class="num debe">{{ l.debe }}</td>
+        <td class="num haber">{{ l.haber }}</td>
       </tr>
       {% endfor %}
-    </tbody>
-    <tfoot>
-      <tr>
-        <td></td>
-        <td class="et">Totales</td>
-        <td class="num">{{ total_debe }}</td>
-        <td class="num">{{ total_haber }}</td>
+      <tr class="totales">
+        <td></td><td></td>
+        <td class="num debe">{{ total_debe }}</td>
+        <td class="num haber">{{ total_haber }}</td>
       </tr>
-    </tfoot>
-  </table>
+    </table>
 
-  <div class="firmas">
-    <div class="firma"><div class="linea"></div><div class="nombre">{{ elaborado }}</div><div class="rol">Elaborado por</div></div>
-    <div class="firma"><div class="linea"></div><div class="nombre">{{ revisado }}</div><div class="rol">Revisado por</div></div>
-    <div class="firma"><div class="linea"></div><div class="nombre">{{ autorizado }}</div><div class="rol">Autorizado por</div></div>
+    <div class="firmas">
+      <div class="firma"><div class="rol">Elaborado Por:</div><div class="linea"></div><div class="nombre">{{ elaborado }}</div></div>
+      <div class="firma"><div class="rol">Revisado Por:</div><div class="linea"></div><div class="nombre">{{ revisado }}</div></div>
+      <div class="firma"><div class="rol">Autorizado Por:</div><div class="linea"></div><div class="nombre">{{ autorizado }}</div></div>
+    </div>
   </div>
 </body>
 </html>
