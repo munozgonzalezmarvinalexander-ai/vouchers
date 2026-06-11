@@ -1,0 +1,439 @@
+codigo,nombre,tipo,naturaleza,es_banco,numero_cuenta,resultado,activo
+11101001,Caja Chica Conacmi,ACTIVO,DEUDORA,0,,,1
+11101002,Caja Chica KNH,ACTIVO,DEUDORA,0,,,1
+11101003,Caja Chica TOY BOX,ACTIVO,DEUDORA,0,,,1
+11101004,Caja Chica BMZ/KNH,ACTIVO,DEUDORA,0,,,1
+11101005,Caja Chica PROVICTIMIS,ACTIVO,DEUDORA,0,,,1
+11101006,Caja Chica UNICEF,ACTIVO,DEUDORA,0,,,1
+11101007,Caja Chica SKN,ACTIVO,DEUDORA,0,,,1
+11102001,BI Cta. 004-001110-6 CONACMI Planilla,BANCO,DEUDORA,1,004-001110-6,,1
+11102002,BI Cta. 027-057283-4 CONACMI Fondos Propios,BANCO,DEUDORA,1,027-057283-4,,1
+11102003,BI Cta. 012-038658-6  CONACMI Fondos Propios,BANCO,DEUDORA,1,012-038658-6,,1
+11102004,GYT Cta. 082-0003918-9 CONACMI Fondos Propios,BANCO,DEUDORA,1,082-0003918-9,,1
+11102005,GYT Cta. 082-0003916-9 CONACMI Fondos Propios,BANCO,DEUDORA,1,082-0003916-9,,1
+11102006,BI Cta. 004-001108-0 KNH,BANCO,DEUDORA,1,004-001108-0,,1
+11102007,BI Cta. 004-001109-8 KNH/Diferencial Cambiario,BANCO,DEUDORA,1,004-001109-8,,1
+11102008,BI Cta. 002-005272-0 KNH/SANTA FAZ,BANCO,DEUDORA,1,002-005272-0,,1
+11102009,BI Cta. 002-007537-0 KNH/SANTA FAZ Diferencial Cambiario,BANCO,DEUDORA,1,002-007537-0,,1
+11102010,BI Cta. 002-005041-9 KNH/SALUD Y JUSTICIA,BANCO,DEUDORA,1,002-005041-9,,1
+11102011,BI Cta. 012-037806-2 KNH/SALUD Y JUSTICIA Diferencial Cambiario,BANCO,DEUDORA,1,012-037806-2,,1
+11102012,BI Cta. 017-016830-2 KNH/BMZ,BANCO,DEUDORA,1,017-016830-2,,1
+11102013,BI Cta. No. 002-004292-9  PRO VICTIMIS,BANCO,DEUDORA,1,002-004292-9,,1
+11102014,BI Cta. 002-004300-0 TOY BOX,BANCO,DEUDORA,1,002-004300-0,,1
+11102015,MC Cta. 46-00855562-00001-1 Plazo Fijo,BANCO,DEUDORA,1,46-00855562-00001-1,,1
+11102016,BI Cta. 012-044468-2 UNICEF,BANCO,DEUDORA,1,012-044468-2,,1
+11102017,BI Cta 000-006803-1SKN,BANCO,DEUDORA,1,000-006803-1,,1
+11102018,BI Cta. 002-005264-7 SKN PROGRAMA,BANCO,DEUDORA,1,002-005264-7,,1
+11201001,Cuentas Por Cobrar,ACTIVO,DEUDORA,0,,,1
+11201002,Cuentas por cobrar entre proyectos,ACTIVO,DEUDORA,0,,,1
+11202001,Gastos Anticipados,ACTIVO,DEUDORA,0,,,1
+11202002,Cuentas x Liquidar,ACTIVO,DEUDORA,0,,,1
+11202003,Anticipo a Empleados,ACTIVO,DEUDORA,0,,,1
+11202004,Anticipos sobre sueldos,ACTIVO,DEUDORA,0,,,1
+11202005,Seguros Pagados Anticipados,ACTIVO,DEUDORA,0,,,1
+11202006,Alquileres Pagados Anticipados,ACTIVO,DEUDORA,0,,,1
+12101001,Mobiliario y Equipo,ACTIVO,DEUDORA,0,,,1
+12101002,Equipo De Computación,ACTIVO,DEUDORA,0,,,1
+12101003,Vehiculos,ACTIVO,DEUDORA,0,,,1
+12101004,Herramienta,ACTIVO,DEUDORA,0,,,1
+12101005,Inmuebles,ACTIVO,DEUDORA,0,,,1
+12201001,Depreciación Acumulada Equipo de Compu.,ACTIVO,DEUDORA,0,,,1
+12201002,Depreciación Acumulada Vehiculos,ACTIVO,DEUDORA,0,,,1
+12201003,Depreciación Acumulada Herramienta,ACTIVO,DEUDORA,0,,,1
+12201004,Depreciación Acumulada Inmuebles,ACTIVO,DEUDORA,0,,,1
+13101001,Derechos,ACTIVO,DEUDORA,0,,,1
+13101002,Lineas Telefónicas,ACTIVO,DEUDORA,0,,,1
+13101003,Activos en transito,ACTIVO,DEUDORA,0,,,1
+13102001,Depositos Alquileres,ACTIVO,DEUDORA,0,,,1
+13102002,Depositos Diversos,ACTIVO,DEUDORA,0,,,1
+13103,INVERSIONES,ACTIVO,DEUDORA,0,,,1
+13103001,Inversiones,ACTIVO,DEUDORA,0,,,1
+21101001,Cuentas Por Pagar,PASIVO,ACREEDORA,0,,,1
+21101002,Sueldos Por Pagar,PASIVO,ACREEDORA,0,,,1
+21101003,Cuota Patronal IGSS,PASIVO,ACREEDORA,0,,,1
+21101004,Prestaciones Laborales,PASIVO,ACREEDORA,0,,,1
+21101005,Aportes Anticipados,PASIVO,ACREEDORA,0,,,1
+21101006,Activos en transito,PASIVO,ACREEDORA,0,,,1
+21101007,Embargo,PASIVO,ACREEDORA,0,,,1
+21102001,Proveedores Locales,PASIVO,ACREEDORA,0,,,1
+21102002,Proveedores Del Exterior,PASIVO,ACREEDORA,0,,,1
+21103001,IGSS Laboral,PASIVO,ACREEDORA,0,,,1
+21103002,Impuesto Sobre La Renta,PASIVO,ACREEDORA,0,,,1
+21103003,IVA Facturas Especiales,PASIVO,ACREEDORA,0,,,1
+21104001,Depositos Recibidos,PASIVO,ACREEDORA,0,,,1
+21104002,Ingresos Anticipados,PASIVO,ACREEDORA,0,,,1
+21104003,Fondos x Aplicar,PASIVO,ACREEDORA,0,,,1
+22101001,Creditos Bancarios,PASIVO,ACREEDORA,0,,,1
+31101001,Patrimonio CONACMI,PATRIMONIO,ACREEDORA,0,,,1
+31101002,Fondo Patrimonial KNH,PATRIMONIO,ACREEDORA,0,,,1
+31101003,Fondo Patrimonial TOYBOX,PATRIMONIO,ACREEDORA,0,,,1
+31101004,Fondo Patrimonial PROVICTIMIS,PATRIMONIO,ACREEDORA,0,,,1
+31101005,Fondo Patrimonial KNH/BMZ,PATRIMONIO,ACREEDORA,0,,,1
+31101006,Fondo Patrimonial UNICEF,PATRIMONIO,ACREEDORA,0,,,1
+31101007,Fondo Patrimonial KNH/SANTA FAZ,PATRIMONIO,ACREEDORA,0,,,1
+31102001,Reserva,PATRIMONIO,ACREEDORA,0,,,1
+31103001,Resultado Acumulado,PATRIMONIO,ACREEDORA,0,,,1
+31103002,Exeso de Ingreso S/Egreso,PATRIMONIO,ACREEDORA,0,,,1
+51101001,Aportes,INGRESOS,ACREEDORA,0,,,1
+51101002,Donaciones en Especie,INGRESOS,ACREEDORA,0,,,1
+51101003,Terapias,INGRESOS,ACREEDORA,0,,,1
+51101004,Donaciones AYNI,INGRESOS,ACREEDORA,0,,,1
+51101005,Donaciones KCS,INGRESOS,ACREEDORA,0,,,1
+51101006,Donaciones Family,INGRESOS,ACREEDORA,0,,,1
+51101007,Donaciones Consorcio,INGRESOS,ACREEDORA,0,,,1
+51102001,Donaciones KNH,INGRESOS,ACREEDORA,0,,,1
+51102002,Donacion KNH/Santa Faz,INGRESOS,ACREEDORA,0,,,1
+51102003,Donacion KNH/Salud y Justicia,INGRESOS,ACREEDORA,0,,,1
+51102004,Donacion KNH/BMZ,INGRESOS,ACREEDORA,0,,,1
+51102005,Donaciones Fondos Especiales,INGRESOS,ACREEDORA,0,,,1
+51102006,Diferencial Cambiario,INGRESOS,ACREEDORA,0,,,1
+51102007,Diferencial Cambiario Años Anteriores,INGRESOS,ACREEDORA,0,,,1
+51102008,Donaciones TOY BOX,INGRESOS,ACREEDORA,0,,,1
+51102009,Donaciones UNICEF,INGRESOS,ACREEDORA,0,,,1
+51102010,Donacion RROVICTIMIS,INGRESOS,ACREEDORA,0,,,1
+51102011,Donaciones en especie,INGRESOS,ACREEDORA,0,,,1
+51102012,Donaciones SKN,INGRESOS,ACREEDORA,0,,,1
+52101001,Ingresos Varios,INGRESOS,ACREEDORA,0,,,1
+52101002,Ganancia Tipo de Cambio,INGRESOS,ACREEDORA,0,,,1
+52101003,Intereses,INGRESOS,ACREEDORA,0,,,1
+52101004,Fondos por aplicar años anteriores,INGRESOS,ACREEDORA,0,,,1
+52101005,Donaciones en especie,INGRESOS,ACREEDORA,0,,,1
+61101001,Sueldos,GASTOS,DEUDORA,0,,,1
+61101002,Bonificación Incentivo,GASTOS,DEUDORA,0,,,1
+61101003,Vacaciones,GASTOS,DEUDORA,0,,,1
+61101004,Aguinaldo,GASTOS,DEUDORA,0,,,1
+61101005,Bono 14,GASTOS,DEUDORA,0,,,1
+61101006,Indemnizaciones,GASTOS,DEUDORA,0,,,1
+61101007,Cuotas Patronales,GASTOS,DEUDORA,0,,,1
+61101008,Honorarios,GASTOS,DEUDORA,0,,,1
+61101009,Gastos de coordinación,GASTOS,DEUDORA,0,,,1
+61101010,Sistematización,GASTOS,DEUDORA,0,,,1
+61101011,Mensajeria,GASTOS,DEUDORA,0,,,1
+61101012,Movilización,GASTOS,DEUDORA,0,,,1
+61101013,Fianzas,GASTOS,DEUDORA,0,,,1
+61101014,Seguro de Vida,GASTOS,DEUDORA,0,,,1
+61101015,Mantenimiento de Equipo,GASTOS,DEUDORA,0,,,1
+61101016,Luz,GASTOS,DEUDORA,0,,,1
+61101017,Limpieza,GASTOS,DEUDORA,0,,,1
+61101018,Impresiones,GASTOS,DEUDORA,0,,,1
+61101019,Telefono e internet,GASTOS,DEUDORA,0,,,1
+61101020,Viáticos,GASTOS,DEUDORA,0,,,1
+61101021,Pagina Web,GASTOS,DEUDORA,0,,,1
+61101022,Materiales de oficina,GASTOS,DEUDORA,0,,,1
+61101023,Multas,GASTOS,DEUDORA,0,,,1
+61101024,Intereses,GASTOS,DEUDORA,0,,,1
+61101025,Suministros de computación,GASTOS,DEUDORA,0,,,1
+61101026,Mantenimiento de oficina,GASTOS,DEUDORA,0,,,1
+61101027,Depreciación Equipo de Computación,GASTOS,DEUDORA,0,,,1
+61101028,Otros Gastos,GASTOS,DEUDORA,0,,,1
+61101029,Depreciación Mobiliario y Equipo,GASTOS,DEUDORA,0,,,1
+61101030,Depreciación Inmuebles,GASTOS,DEUDORA,0,,,1
+61101031,Aportes a Proyectos,GASTOS,DEUDORA,0,,,1
+61101032,Parqueo,GASTOS,DEUDORA,0,,,1
+61101033,Gastos Bancarios,GASTOS,DEUDORA,0,,,1
+61101034,Fondos Especiales Family,GASTOS,DEUDORA,0,,,1
+61101035,Juicio Laboral,GASTOS,DEUDORA,0,,,1
+61101036,Fondos Especiales Consorcio,GASTOS,DEUDORA,0,,,1
+61101037,Seguro de vehículo,GASTOS,DEUDORA,0,,,1
+61101038,Depreciaciones Vehiculos,GASTOS,DEUDORA,0,,,1
+61101039,Mantenimiento de vehículo,GASTOS,DEUDORA,0,,,1
+61201001,Salario Psicóloga,GASTOS,DEUDORA,0,,,1
+61201002,Salario Trabajadora Social,GASTOS,DEUDORA,0,,,1
+61201003,Salario Coordinador Programa de Prevención,GASTOS,DEUDORA,0,,,1
+61201004,Salario Coordinador Metodológico,GASTOS,DEUDORA,0,,,1
+61201005,Salario Contadora,GASTOS,DEUDORA,0,,,1
+61201006,Salario Educador Familiar,GASTOS,DEUDORA,0,,,1
+61201007,Epesistas,GASTOS,DEUDORA,0,,,1
+61201008,Salario Coordinador,GASTOS,DEUDORA,0,,,1
+61201009,Salario Facilitador,GASTOS,DEUDORA,0,,,1
+61201010,Salario Coordinador de Programas (PROYECTOS),GASTOS,DEUDORA,0,,,1
+61201011,Salario Promotores,GASTOS,DEUDORA,0,,,1
+61201012,Salario de Director de la institución CONACMI,GASTOS,DEUDORA,0,,,1
+61201013,Coordinador de Registro,GASTOS,DEUDORA,0,,,1
+61201014,Asistente de Registro,GASTOS,DEUDORA,0,,,1
+61201015,Asistente de Campo,GASTOS,DEUDORA,0,,,1
+61201016,Educador de calle 1,GASTOS,DEUDORA,0,,,1
+61201017,Educador de calle 2,GASTOS,DEUDORA,0,,,1
+61201018,Asistente metodológico (1 50% tiempo),GASTOS,DEUDORA,0,,,1
+61201019,"Técnicos (3, 100% tiempo)",GASTOS,DEUDORA,0,,,1
+61201020,Facilitador de monitoreo y evaluación (1 100% tiempo),GASTOS,DEUDORA,0,,,1
+61201021,Facilitador comunitario,GASTOS,DEUDORA,0,,,1
+61201022,Asistente Metodológico,GASTOS,DEUDORA,0,,,1
+61201023,Sistematizador,GASTOS,DEUDORA,0,,,1
+61201024,Auxiliar de contabilidad,GASTOS,DEUDORA,0,,,1
+61201025,Comunicadora,GASTOS,DEUDORA,0,,,1
+61201026,Salarios,GASTOS,DEUDORA,0,,,1
+61201027,Consultoría Sistema de Información,GASTOS,DEUDORA,0,,,1
+61201028,Sistematización,GASTOS,DEUDORA,0,,,1
+61201029,"Cargas Sociales (bono 14, aguinaldo, Indemnización)",GASTOS,DEUDORA,0,,,1
+61201030,Bono 14,GASTOS,DEUDORA,0,,,1
+61201031,Aguinaldo,GASTOS,DEUDORA,0,,,1
+61201032,Indemnización,GASTOS,DEUDORA,0,,,1
+61201033,Bonificación incentivo,GASTOS,DEUDORA,0,,,1
+61201034,Cuota patronal,GASTOS,DEUDORA,0,,,1
+61201035,Mantenimiento de oficina,GASTOS,DEUDORA,0,,,1
+61201036,Capacitación,GASTOS,DEUDORA,0,,,1
+61201037,Movilización,GASTOS,DEUDORA,0,,,1
+61201038,Combustible,GASTOS,DEUDORA,0,,,1
+61201039,Luz y agua,GASTOS,DEUDORA,0,,,1
+61201040,Telefono,GASTOS,DEUDORA,0,,,1
+61201041,Internet,GASTOS,DEUDORA,0,,,1
+61201042,Plataforma Zoom,GASTOS,DEUDORA,0,,,1
+61201043,Asistencia Económica,GASTOS,DEUDORA,0,,,1
+61201044,Tarjetas telefónicas,GASTOS,DEUDORA,0,,,1
+61201045,Tarjetas telefónicas coordinador,GASTOS,DEUDORA,0,,,1
+61201046,Servicios de limpieza,GASTOS,DEUDORA,0,,,1
+61201047,Mantenimiento de equipo,GASTOS,DEUDORA,0,,,1
+61201048,Servicio de vehículo,GASTOS,DEUDORA,0,,,1
+61201049,Parqueo,GASTOS,DEUDORA,0,,,1
+61201050,Combustible Trabajadora Social,GASTOS,DEUDORA,0,,,1
+61201051,Seguro de vehículo,GASTOS,DEUDORA,0,,,1
+61201052,Impuesto de circulacion de vehiculos,GASTOS,DEUDORA,0,,,1
+61201053,Servicios mensajero,GASTOS,DEUDORA,0,,,1
+61201054,"Papelería, útiles de oficina, tintas y otros",GASTOS,DEUDORA,0,,,1
+61201055,Alquiler del local,GASTOS,DEUDORA,0,,,1
+61201056,Coffee Break,GASTOS,DEUDORA,0,,,1
+61201057,Fotocopias,GASTOS,DEUDORA,0,,,1
+61201058,Diseño de materiales,GASTOS,DEUDORA,0,,,1
+61201059,Banners,GASTOS,DEUDORA,0,,,1
+61201060,Libretas,GASTOS,DEUDORA,0,,,1
+61201061,Lapiceros,GASTOS,DEUDORA,0,,,1
+61201062,Carpetas (1.1.8),GASTOS,DEUDORA,0,,,1
+61201063,Tarjetas de Presentación,GASTOS,DEUDORA,0,,,1
+61201064,Impresión de sistematización del proyecto,GASTOS,DEUDORA,0,,,1
+61201065,Salón,GASTOS,DEUDORA,0,,,1
+61201066,"Consultoría herramienta, análisis integral OJ-CONACMI",GASTOS,DEUDORA,0,,,1
+61201067,Almuerzo,GASTOS,DEUDORA,0,,,1
+61201068,Materiales,GASTOS,DEUDORA,0,,,1
+61201069,Afiches,GASTOS,DEUDORA,0,,,1
+61201070,Trifoliares / (Trípticos),GASTOS,DEUDORA,0,,,1
+61201071,Botones,GASTOS,DEUDORA,0,,,1
+61201072,Playeras,GASTOS,DEUDORA,0,,,1
+61201073,Campañas redes sociales,GASTOS,DEUDORA,0,,,1
+61201074,Mantas vinílicas,GASTOS,DEUDORA,0,,,1
+61201075,Manuales y guías comunitarias (2.3.8),GASTOS,DEUDORA,0,,,1
+61201076,Combustible (Facilitador Comunitario),GASTOS,DEUDORA,0,,,1
+61201077,"Viáticos (Desayuno, Almuerzo, Cena, Hospedaje) (Facilitador Comunitario)",GASTOS,DEUDORA,0,,,1
+61201078,Transporte para evaluaciones integrales (psicológica y sociales) de NNA,GASTOS,DEUDORA,0,,,1
+61201079,Transferencias familiares,GASTOS,DEUDORA,0,,,1
+61201080,Combustible (1 Psicóloga),GASTOS,DEUDORA,0,,,1
+61201081,"Viáticos (Desayuno, Almuerzo, Cena, Hospedaje) (1 Psicóloga)",GASTOS,DEUDORA,0,,,1
+61201082,Gastos de procuración legal,GASTOS,DEUDORA,0,,,1
+61201083,Combustible abogada,GASTOS,DEUDORA,0,,,1
+61201084,"Viáticos (Desayuno, Almuerzo, Cena, Hospedaje) de abogada",GASTOS,DEUDORA,0,,,1
+61201085,Transporte para audiencias de NNA,GASTOS,DEUDORA,0,,,1
+61201086,Combustible 1 coordinador/a (Q. 1000.00 por mes por persona),GASTOS,DEUDORA,0,,,1
+61201087,"Combustible 1 monitoreo y evaluación, 1 asistente metodológico, (Q. 1000.00 por mes por persona)",GASTOS,DEUDORA,0,,,1
+61201088,Estudio de línea basal,GASTOS,DEUDORA,0,,,1
+61201089,Evaluación,GASTOS,DEUDORA,0,,,1
+61201090,Alquileres oficinas,GASTOS,DEUDORA,0,,,1
+61201091,Gastos generales,GASTOS,DEUDORA,0,,,1
+61201092,Comunicación,GASTOS,DEUDORA,0,,,1
+61201093,Servicios Terapéuticos Individuales,GASTOS,DEUDORA,0,,,1
+61201094,Servicios Terapéuticos Grupales,GASTOS,DEUDORA,0,,,1
+61201095,Depreciaciones y amortizaciones,GASTOS,DEUDORA,0,,,1
+61201096,Gastos de Funcionamiento del Programa,GASTOS,DEUDORA,0,,,1
+61201097,Auditoria,GASTOS,DEUDORA,0,,,1
+61201098,Honorarios,GASTOS,DEUDORA,0,,,1
+61201099,Honorarios Coordinador de Desarrollo Institucional,GASTOS,DEUDORA,0,,,1
+61201100,Honorarios Línea Basal,GASTOS,DEUDORA,0,,,1
+61201101,Honorarios Aula Virtual Salud,GASTOS,DEUDORA,0,,,1
+61201102,Honorarios Aula Virtual Psicología,GASTOS,DEUDORA,0,,,1
+61201103,Honorarios de programador de aula virtual,GASTOS,DEUDORA,0,,,1
+61201104,Honorarios del Plan de voluntariado,GASTOS,DEUDORA,0,,,1
+61201105,Honorarios Marketin y comunicación,GASTOS,DEUDORA,0,,,1
+61201106,Honorarios Monitoreo y evaluación,GASTOS,DEUDORA,0,,,1
+61201107,Piloto,GASTOS,DEUDORA,0,,,1
+61201108,Metodológico,GASTOS,DEUDORA,0,,,1
+61201109,"Honorarios por Sistema de Monitoreo (Pago de 8 horas trabajadas por mes Q. 250,00 cada hora)",GASTOS,DEUDORA,0,,,1
+61201110,Honorarios de Cabildeo,GASTOS,DEUDORA,0,,,1
+61201111,Consultoría de estudio de costo-beneficio de la institucionalización vs. entorno familiar,GASTOS,DEUDORA,0,,,1
+61201112,Consultoría Diseño de módulos de formación,GASTOS,DEUDORA,0,,,1
+61201113,Docente para la Facilitación de los módulos de formación,GASTOS,DEUDORA,0,,,1
+61201114,Consultoría de desarrollo de metodología comunitaria,GASTOS,DEUDORA,0,,,1
+61201115,Honorario para epesista de psicología,GASTOS,DEUDORA,0,,,1
+61201116,Honorarios de médico pediatra,GASTOS,DEUDORA,0,,,1
+61201117,Honorarios de abogada,GASTOS,DEUDORA,0,,,1
+61201118,Honorarios por profesional en psicología para cuidado y promoción de la salud mental de los equipos técnicos (AUTOCUIDADO BMZ),GASTOS,DEUDORA,0,,,1
+61201119,Donaciones en Especie,GASTOS,DEUDORA,0,,,1
+61201120,Caja Común,GASTOS,DEUDORA,0,,,1
+61201121,Fondos Especiales,GASTOS,DEUDORA,0,,,1
+61201122,Materiales Didácticos,GASTOS,DEUDORA,0,,,1
+61201123,"Alimentación, Hospedaje",GASTOS,DEUDORA,0,,,1
+61201124,Talleres prevención secundaria y detección casos de violencia sexual dirigido a NNA y familias o cuidadores principales.,GASTOS,DEUDORA,0,,,1
+61201125,Talleres de autocuidado dirigidos a equipo del proyecto (UNICEF),GASTOS,DEUDORA,0,,,1
+61201126,"Viáticos 1 trabajadora social en procesos de acompañamiento durante el manejo de casos niñez víctima de violencia sexual, incluye combustible.",GASTOS,DEUDORA,0,,,1
+61201127,Viático 2 promotores actividades prevención secundaria VS y detección casos dirigidos a niñez y adolescencia y sus familias.,GASTOS,DEUDORA,0,,,1
+61201128,"Viáticos 150 niños, niñas y familias que se movilizan a la sede instit y/o espacios amigables.",GASTOS,DEUDORA,0,,,1
+61201129,Compra de combustible para la Unidad Móvil.,GASTOS,DEUDORA,0,,,1
+61201130,Materiales de lúdicos y terapéuticos para la atención psicológica,GASTOS,DEUDORA,0,,,1
+61201131,Suministros de oficina y papelería,GASTOS,DEUDORA,0,,,1
+61201132,"Refacciones para actividades con niñas, niños, adolescentes y sus familias.",GASTOS,DEUDORA,0,,,1
+61201133,Fotocopias materiales de prevención y atención,GASTOS,DEUDORA,0,,,1
+61201134,Materiales de lúdicos y terapéuticos para la atención psicológica Enm 2,GASTOS,DEUDORA,0,,,1
+61201135,Taller de bienestar de salud mental personal de conacmi  (TOY BOX AUTOCUIDADO),GASTOS,DEUDORA,0,,,1
+61201136,Facilitación de Talleres Salvaguardia,GASTOS,DEUDORA,0,,,1
+61201137,Alimentación reuniones de Gobernanza,GASTOS,DEUDORA,0,,,1
+61201138,Jornadas de inscripción de NNAJ en sub registro,GASTOS,DEUDORA,0,,,1
+61201139,Entrevista y conformación de expedientes para el registro de NNAJ de 20 casos anuales,GASTOS,DEUDORA,0,,,1
+61201140,Gestiones para los trámites administrativos,GASTOS,DEUDORA,0,,,1
+61201141,Acompañamiento a las audiencias para la asesoría legal,GASTOS,DEUDORA,0,,,1
+61201142,Conformación y/o fortalecimiento de 10 REDIREGUA para el apoyo a la identificación y reducir la brecha del subregistro,GASTOS,DEUDORA,0,,,1
+61201143,4 charlas informativas anuales con las 10 REDIREGUAS elegidas,GASTOS,DEUDORA,0,,,1
+61201144,4 reuniones de promoción y sensibilización a las 10 REDIREGUAS elegidas,GASTOS,DEUDORA,0,,,1
+61201145,Práctica sobre el uso de las herramientas para realizar el proceso de informe de nacimiento e inicio del registro de nacimiento,GASTOS,DEUDORA,0,,,1
+61201146,"Talleres educativos sobre derechos de la niñez en escuelas y centros comunitarios. 1,1,1",GASTOS,DEUDORA,0,,,1
+61201147,"Distribución de materiales didácticos sobre derechos de la niñez a NNA. 1,1,2",GASTOS,DEUDORA,0,,,1
+61201148,"Diseño e implementación de campañas de sensibilización comunitarias sobre la protección de los derechos de los NNA. 1,1,3",GASTOS,DEUDORA,0,,,1
+61201149,"Realización de talleres educativos sobre derechos de la niñez en escuelas y centros comunitarios. 1,2,1",GASTOS,DEUDORA,0,,,1
+61201150,"Distribución de materiales didácticos sobre derechos de la niñez a MPE 1,2,2",GASTOS,DEUDORA,0,,,1
+61201151,"Sesiones de capacitación con actores locales de la red de Chinautla en la promoción de derechos entre los NNA en la comunidad. 1,3,1",GASTOS,DEUDORA,0,,,1
+61201152,"Derivación de actividades y casos a otros programas en CONACMI. 2,1,1",GASTOS,DEUDORA,0,,,1
+61201153,"Habilitación y mantenimiento de espacios seguros en el centro de CONACMI en Santa Faz y en comunidades aliadas.  2,2,1",GASTOS,DEUDORA,0,,,1
+61201154,"Implementación de clases de refuerzo escolar para NNA  de Guatemala. 3,1,1",GASTOS,DEUDORA,0,,,1
+61201155,"Organización de actividades recreativas y deportivas para NNA  3,1,2",GASTOS,DEUDORA,0,,,1
+61201156,"Desarrollo de talleres de edu-entretenimiento para promover el desarrollo integral de los NNA. 3,1,3",GASTOS,DEUDORA,0,,,1
+61201157,"Capacitación a MPE en habilidades de desarrollo económico y gestión de pequeños negocios. 3,2,1",GASTOS,DEUDORA,0,,,1
+61201158,"Implementación de programas de apoyo financiero y asesoría para MPE en la gestión de sus negocios. 3,2,2",GASTOS,DEUDORA,0,,,1
+61201159,"Acompañamiento y apoyo a Adolescentes en su vinculación y finalización de cursos técnico vocacional en el INTECAP. 4,1,1",GASTOS,DEUDORA,0,,,1
+61201160,Desarrollo de un plan de monitoreo y evaluación que incluya indicadores clave de desempeño y resultados.,GASTOS,DEUDORA,0,,,1
+61201161,Desarrollo de línea de base del proyecto. LÍNEA 17,GASTOS,DEUDORA,0,,,1
+61201162,Realización de evaluaciones de medio término y finales para medir el impacto y la efectividad del proyecto,GASTOS,DEUDORA,0,,,1
+61201163,"Implementación de un protocolo claro y detallado para la identificación, reporte y manejo de incidentes de protección.",GASTOS,DEUDORA,0,,,1
+61201164,Capacitación regular del personal y los voluntarios (EPS)  en temas de protección infantil y salvaguardia.,GASTOS,DEUDORA,0,,,1
+61201165,Establecimiento de canales de comunicación seguros y confidenciales para que los NNA y sus familias (MPE)  puedan reportar cualquier preocupación o incidente de protección.,GASTOS,DEUDORA,0,,,1
+61201166,Consultoría construcción y aprobación app,GASTOS,DEUDORA,0,,,1
+61201167,Establecer un grupo control de comadronas y representantes de RENAP,GASTOS,DEUDORA,0,,,1
+61201168,"Materiales (alimentación, movilización y materia informativo) 3,2,1",GASTOS,DEUDORA,0,,,1
+61201169,"Materiales (alimentación, pago de movilización y guías)",GASTOS,DEUDORA,0,,,1
+61201170,"Materiales (alimentación, movilización y rutas mediadas)",GASTOS,DEUDORA,0,,,1
+61201171,Viáticos y hospedaje del equipo de trabajo de campo (3 facilitadores y una coordinadora),GASTOS,DEUDORA,0,,,1
+61201172,Pago de movilización del equipo a oficina central de CONACMI zona 1 en donde se desarrollará la capacitaciónde 4 días (3 facilitadores y una coordinadora),GASTOS,DEUDORA,0,,,1
+61201173,"Capacitación a personal del proyecto, funcionarios de RENAP y personal de CONACMI en el uso de la aplicación",GASTOS,DEUDORA,0,,,1
+61201174,"Capacitación a Comadronas sobre el uso de la aplicación ATV, siendo una por cada departamento, o sea una en Quiché, una en Chimaltenango y una en Sacatepequez",GASTOS,DEUDORA,0,,,1
+61201175,Técnicos acompañan a las comadronas y familias,GASTOS,DEUDORA,0,,,1
+61201176,Formación y reunión mensual con el representante-registrador de RENAP 3.1,GASTOS,DEUDORA,0,,,1
+61201177,Fortalecimiento a REDIREGUAS y representante de RENAP,GASTOS,DEUDORA,0,,,1
+61201178,"Contratación del servicio telefónico de 60 dispositivos moviles, plan Q250",GASTOS,DEUDORA,0,,,1
+61201179,"Reuniones de seguimiento del uso de la aplicación con el apoyo del técnico, facilitador de monitoreo y evaluación y coordinadora del proyecto de ATV 3.3.2",GASTOS,DEUDORA,0,,,1
+61201180,Reunión con autoridades locales,GASTOS,DEUDORA,0,,,1
+61201181,"Elaboración e impresión de mantas vinílicas o banner en grande y pequeño con el nombre del proyecto que se usará en las formaciones, reuniones o eventos con diferentes grupos.",GASTOS,DEUDORA,0,,,1
+61201182,Evaluación comparativa con comadronas en 2 municipios,GASTOS,DEUDORA,0,,,1
+61201183,"Acompañamiento, supervisión y monitoreo de campo, a los 6 municipios elegidos 4.2",GASTOS,DEUDORA,0,,,1
+61201184,Reuniones a nivel central para presentar informes de avance de la implementación de la aplicación a la Mesa Técnica/Supervisión interinstitucional RENAP-CONACMI a nivel central,GASTOS,DEUDORA,0,,,1
+61201185,Combustible (60 visitas domiciliarias por trimestre haciendo un total de 240 visitas anuales 160 aportaria pro victimis) (y las otras 80 anuales KNH),GASTOS,DEUDORA,0,,,1
+61201186,"Tarjeta telefónica para trabajo de campo (12 tarjetas por año, por un celular) (1 trabajadora social)",GASTOS,DEUDORA,0,,,1
+61201187,"Refacciones (Q. 10.00*240 NNJ,MPE*10 meses) (Provictimis aportara para 800 refacciones, y KNH 1600 refacciones)",GASTOS,DEUDORA,0,,,1
+61201188,Materiales didácticos para talleres con MPE,GASTOS,DEUDORA,0,,,1
+61201189,Fondo de apoyo especial,GASTOS,DEUDORA,0,,,1
+61201190,Medicina para NNA y MPE,GASTOS,DEUDORA,0,,,1
+61201191,Exámenes médicos (estudios diagnósticos y consultas con especialistas para NNA y MPE),GASTOS,DEUDORA,0,,,1
+61201192,Combustible (75 visitas legales por año,GASTOS,DEUDORA,0,,,1
+61201193,"Trámites legales (timbres, copias, impresiones) (30 grupos familiares)",GASTOS,DEUDORA,0,,,1
+61201194,Plan telefónico abogada,GASTOS,DEUDORA,0,,,1
+61201195,Alimentación (familias que asisten audiencia) (3 miembros por familia Q. 75.00)(5 audiencias familiares por 10 meses),GASTOS,DEUDORA,0,,,1
+61201196,Materiales para talleres productividad,GASTOS,DEUDORA,0,,,1
+61201197,Espacios para el autocuidado (PROVICTIMIS),GASTOS,DEUDORA,0,,,1
+61201198,Reuniones de promoción y sensibilización sobre la importancia de la coordinación interinstitucional,GASTOS,DEUDORA,0,,,1
+61201199,Reuniones de coordinación con municipalidades para establecer la programación de los procesos de registro (Investigación que actualice la situación del sub registro en los municipios con presencia de CONACMI),GASTOS,DEUDORA,0,,,1
+61201200,Realización de campañas de información sobre los procesos de registro y de la importancia de contar con una identidad,GASTOS,DEUDORA,0,,,1
+61201201,"Realización de jornadas de registro, pago de los trámites y costos de la emisión del documento de identidad",GASTOS,DEUDORA,0,,,1
+61201202,Viáticos y gastos de viaje,GASTOS,DEUDORA,0,,,1
+61201203,Procesos informativos a la población participante,GASTOS,DEUDORA,0,,,1
+61201204,"Reuniones con personal de RENAP encargado del sub registro para evaluar el desarrollo de las actividades (Positivo, Negativo, Interesante, Recomendaciones)",GASTOS,DEUDORA,0,,,1
+61201205,3 diagnósticos de necesidades de formación laboral de NNAJ en riesgo y situación de calle y sus MPE,GASTOS,DEUDORA,0,,,1
+61201206,9 reuniones de sinergia con garantes y cogarantes para establecer las estrategias de los talleres,GASTOS,DEUDORA,0,,,1
+61201207,9 reuniones de planificación de talleres de formación laboral con garantes y cogarantes,GASTOS,DEUDORA,0,,,1
+61201208,"18 talleres de formación laboral para NNAJ en riesgo y situación de calle, así como los MPE de estos",GASTOS,DEUDORA,0,,,1
+61201209,3 diagnósticos de necesidades de generación de ingresos de NNAJ en riesgo y situación de calle y sus MPE,GASTOS,DEUDORA,0,,,1
+61201210,12 talleres de formación en emprendimientos dirigido a NNAJ en riesgo y situación de calle y sus MPE,GASTOS,DEUDORA,0,,,1
+61201211,30 sesiones de evaluación de solicitudes de becas realizadas por NNAJ y/o MPE en riesgo o situación de calle,GASTOS,DEUDORA,0,,,1
+61201212,75 becas otorgadas a NNAJ en riesgo y situación de calle y sus MPE,GASTOS,DEUDORA,0,,,1
+61201213,3 diagnósticos de necesidades de formación de crianza con ternura y protección infantil para docentes de los centros escolares cercanos o donde asisten los NNAJ en riesgo y situación de calle,GASTOS,DEUDORA,0,,,1
+61201214,9 reuniones de sinergia con garantes y cogarantes para establecer las estrategias de los talleres de formación a docentes,GASTOS,DEUDORA,0,,,1
+61201215,18 talleres de formación de crianza con ternura y protección infantil para docentes de los centros educativos cercanos o donde acuden los NNAJ en riesgo y situación de calle,GASTOS,DEUDORA,0,,,1
+61201216,9 reuniones de sinergia con garantes y cogarantes para establecer las estrategias de inclusión de NNAJ en riesgo o situación de calle al sistema educativo formal,GASTOS,DEUDORA,0,,,1
+61201217,30 NNAJ referidos a los centros escolares cercanos o donde asisten,GASTOS,DEUDORA,0,,,1
+61201218,120 NNAJ  acompañados y asesorados en su proceso educativo (se incluyen 90 NNAJ que ya son parte del sistema educativo formal),GASTOS,DEUDORA,0,,,1
+61201219,30 recorridos para determinar las necesidades de salud de los NNAJ en riesgo y situación de calle y sus MPE,GASTOS,DEUDORA,0,,,1
+61201220,9 reuniones de sinergia con garantes y cogarantes para establecer la estrategia de realización de los talleres de sensibilización y formación,GASTOS,DEUDORA,0,,,1
+61201221,15 talleres de sensibilización  sobre salud personal y familiar a NNAJ en riesgo y situación de calle,GASTOS,DEUDORA,0,,,1
+61201222,15 talleres de formación en EIS - PV dirigido a NNAJ en riesgo y situación de calle,GASTOS,DEUDORA,0,,,1
+61201223,15 talleres de formación en prevención del consumo de sustancias dirigido a NNAJ en riesgo y situación de calle,GASTOS,DEUDORA,0,,,1
+61201224,30 recorridos para determinar las necesidades psicosociales de los NNAJ en riesgo y situación de calle y sus MPE,GASTOS,DEUDORA,0,,,1
+61201225,"240 NNAJ en riesgo y situación de calle referidos a los garantes y cogarantes de la siguiente forma: 150 a salud, 60 a salud sexual y reproductiva, y, 30 a SECCATID",GASTOS,DEUDORA,0,,,1
+61201226,300 NNAJ en riesgo y situación de calle en atención psicológica y social,GASTOS,DEUDORA,0,,,1
+61201227,150 NNAJ en la SBS (Secretaria de Bienestar Social) en atención psicosocial,GASTOS,DEUDORA,0,,,1
+61201228,12 actividades deportivas y/o culturales con NNAJ en riesgo y situación de calle,GASTOS,DEUDORA,0,,,1
+61201229,15 talleres de formación en EIS - PV dirigido a MPE de NNAJ en riesgo y situación de calle,GASTOS,DEUDORA,0,,,1
+61201230,15 talleres de formación en nuevas masculinidades dirigido a MPE de NNAJ en riesgo y situación de calle,GASTOS,DEUDORA,0,,,1
+61201231,15 talleres de formación en género dirigido a MPE de NNAJ en riesgo y situación de calle,GASTOS,DEUDORA,0,,,1
+61201232,15 talleres de formación en protección infantil y rutas de denuncia dirigido a MPE de NNAJ en riesgo y situación de calle,GASTOS,DEUDORA,0,,,1
+61201233,30 recorridos para determinar las necesidades de atención psicosocial de los MPE de los NNAJ en riesgo y situación de calle,GASTOS,DEUDORA,0,,,1
+61201234,3 escuelas para 225 MPE de NNAJ en riesgo y situación de calle (incluye subvención epesistas),GASTOS,DEUDORA,0,,,1
+61201235,12 actividades recreativas y/o integración familiar con las familias de NNAJ en riesgo y situación de calle,GASTOS,DEUDORA,0,,,1
+61201236,3 reuniones de sinergia con garantes y cogarantes para establecer las estrategias de las campañas de sensibilización comunitaria sobre las diferentes formas de violencia hacia los NNAJ en riesgo y situación de calle,GASTOS,DEUDORA,0,,,1
+61201237,3 campañas de sensibilización comunitaria sobre las diferentes formas de violencia y cuidado alternativo hacia los NNAJ en riesgo y situación de calle y sus MPE,GASTOS,DEUDORA,0,,,1
+61201238,Ingreso de información de los participantes con base a los instrumentos de la línea de base,GASTOS,DEUDORA,0,,,1
+61201239,Construcción de informes con base a la información del sistema de monitoreo,GASTOS,DEUDORA,0,,,1
+61201240,1 evaluación de medio término realizada con apoyo de los NNAJ en riesgo y situación de calle y sus MPE,GASTOS,DEUDORA,0,,,1
+61201241,1 evaluación final realizada con apoyo de los NNAJ en riesgo y situación de calle y sus MPE,GASTOS,DEUDORA,0,,,1
+61201242,Refacciones para línea basal,GASTOS,DEUDORA,0,,,1
+61201243,Consultoría Línea Basal,GASTOS,DEUDORA,0,,,1
+61201244,Refacciones para elaboración de pl,GASTOS,DEUDORA,0,,,1
+61201245,Consultoría para elaboración de pl,GASTOS,DEUDORA,0,,,1
+61201246,Refacciones para reuniones de coor,GASTOS,DEUDORA,0,,,1
+61201247,Refacciones para actos de firma de,GASTOS,DEUDORA,0,,,1
+61201248,Viáticos de 30 familias,GASTOS,DEUDORA,0,,,1
+61201249,Costes de viaje psicóloga,GASTOS,DEUDORA,0,,,1
+61201250,"Dietas 1 psicologos/as, (Q. 750.00 por m",GASTOS,DEUDORA,0,,,1
+61201251,Consultoría para la elaboración fa,GASTOS,DEUDORA,0,,,1
+61201252,Consultoría para la elaboración de,GASTOS,DEUDORA,0,,,1
+61201253,Refacciones para elaborar  el prot,GASTOS,DEUDORA,0,,,1
+61201254,Refacciones para reuniones de coor,GASTOS,DEUDORA,0,,,1
+61201255,Refacciones para entrevistas con N,GASTOS,DEUDORA,0,,,1
+61201256,Diseño e  Impresión de protocolos,GASTOS,DEUDORA,0,,,1
+61201257,Conferencia de prensa,GASTOS,DEUDORA,0,,,1
+61201258,Materiales de capacitación para el,GASTOS,DEUDORA,0,,,1
+61201259,Refacciones para el personal del O,GASTOS,DEUDORA,0,,,1
+61201260,Consultoría para elaboración de li,GASTOS,DEUDORA,0,,,1
+61201261,Refaccion para reuniones línea bas,GASTOS,DEUDORA,0,,,1
+61201262,Consultoría para elaboración de pl,GASTOS,DEUDORA,0,,,1
+61201263,Refacciones para elaboración del p,GASTOS,DEUDORA,0,,,1
+61201264,Refacciones para reuniones de coo,GASTOS,DEUDORA,0,,,1
+61201265,Refacciones para actos de firma d,GASTOS,DEUDORA,0,,,1
+61201266,viáticos para 90 familias que fuer,GASTOS,DEUDORA,0,,,1
+61201267,Costes de viaje (depreciación de vehículo T.S),GASTOS,DEUDORA,0,,,1
+61201268,"Dietas 1 trabajadoras sociales, (Q. 750.",GASTOS,DEUDORA,0,,,1
+61201269,Costes de viaje (depreciación de vehículo Abogada),GASTOS,DEUDORA,0,,,1
+61201270,Dietas 1 abogados/as (Q. 750.00 por mes),GASTOS,DEUDORA,0,,,1
+61201271,Consultoría para formular el proto,GASTOS,DEUDORA,0,,,1
+61201272,Refacciones para formular el proto,GASTOS,DEUDORA,0,,,1
+61201273,Refacciones para reuniones de coor,GASTOS,DEUDORA,0,,,1
+61201274,Refacciones para entrevistas con N,GASTOS,DEUDORA,0,,,1
+61201275,Diseño e  Impresión de protocolos,GASTOS,DEUDORA,0,,,1
+61201276,Over Head,GASTOS,DEUDORA,0,,,1
+61201277,Materiales de capacitación para el,GASTOS,DEUDORA,0,,,1
+61201278,Refacciones para reuniones de sens,GASTOS,DEUDORA,0,,,1
+61201279,Refacciones para capacitación del,GASTOS,DEUDORA,0,,,1
+61201280,Materiales de librería capacitació (R2 2.2.4),GASTOS,DEUDORA,0,,,1
+61201281,Fotocopias de materiales,GASTOS,DEUDORA,0,,,1
+61201282,Refacciones para reuniones de coor,GASTOS,DEUDORA,0,,,1
+61201283,Refaccion para actos de firma de c,GASTOS,DEUDORA,0,,,1
+61201284,Consultoría para plan de divulgaci,GASTOS,DEUDORA,0,,,1
+61201285,SEGURIDAD Y PROTECCIÓN INSTITUCIONAL,GASTOS,DEUDORA,0,,,1
+61201286,Refacciones para reuniones de coo,GASTOS,DEUDORA,0,,,1
+61201287,Laptop,GASTOS,DEUDORA,0,,,1
+61201288,Vehículo,GASTOS,DEUDORA,0,,,1
+61201289,Consultoría sistema de monitoreo,GASTOS,DEUDORA,0,,,1
+61201290,Material para talleres de monitoreo,GASTOS,DEUDORA,0,,,1
+61201291,Refacciones - monitoreo,GASTOS,DEUDORA,0,,,1
+61201292,Refacciones - evaluación,GASTOS,DEUDORA,0,,,1
+61201293,Costes de viaje (despreciacion de vehículo coordinadora,GASTOS,DEUDORA,0,,,1
+61201294,"Dietas 1 coordinador/a,",GASTOS,DEUDORA,0,,,1
+61201295,Dietas,GASTOS,DEUDORA,0,,,1
+61201296,Honorarios monitoreo aulas,GASTOS,DEUDORA,0,,,1
+61201297,Salario Asistencia,GASTOS,DEUDORA,0,,,1
+71101001,Intereses Bancarios Gasto,GASTOS,DEUDORA,0,,,1
+71101002,Diferencial Cambiario Gasto,GASTOS,DEUDORA,0,,,1
+71101003,Perdida en venta activos fijos,GASTOS,DEUDORA,0,,,1

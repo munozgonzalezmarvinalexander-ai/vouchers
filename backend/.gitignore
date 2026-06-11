@@ -1,0 +1,13 @@
+# Secretos y entorno
+.env
+
+# Base de datos local de prueba
+*.db
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+.pytest_cache/
