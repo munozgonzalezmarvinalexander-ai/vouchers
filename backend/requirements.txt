@@ -6,5 +6,4 @@ openpyxl>=3.1            # leer el Excel en el script de extracción
 fastapi>=0.110           # framework de la API
 uvicorn[standard]>=0.29  # servidor para correr la API
 jinja2>=3.1               # plantilla del voucher (HTML/PDF)
-weasyprint>=60           # HTML -> PDF (en el servidor; ver guía de despliegue)
 pyspellchecker>=0.8        # corrección ortográfica en español

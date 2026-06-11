@@ -1,0 +1,21 @@
+# Render Blueprint — despliega el backend como servicio Python (sin Docker).
+#
+# Uso: en el dashboard de Render -> New -> Blueprint -> conecta este repositorio.
+# Render lee este archivo y crea el servicio con la configuración de abajo.
+# Las variables marcadas con sync:false se pegan a mano en el dashboard.
+
+services:
+  - type: web
+    name: vouchers
+    runtime: python
+    rootDir: backend
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL      # cadena de conexión de Neon (PostgreSQL)
+        sync: false
+      - key: CORS_ORIGINS      # URL del frontend en Vercel, ej. https://tu-app.vercel.app
+        sync: false
+      - key: PYTHON_VERSION
+        value: "3.12.6"

@@ -53,8 +53,8 @@ ellas y compartiendo la misma base de datos. Todo con planes <strong>gratuitos</
 <li><strong>Base de datos (Neon, PostgreSQL):</strong> el lugar único y compartido donde se
   guardan los vouchers. Que sea uno solo es lo que permite que las 5 computadoras
   vean lo mismo.</li>
-<li><strong>Backend (Render, con Docker):</strong> la API que ya construimos. Aquí corren las
-  reglas (cuadre, numeración, estados) y se generan el PDF y el Excel.</li>
+<li><strong>Backend (Render, Python):</strong> la API que ya construimos. Aquí corren las
+  reglas (cuadre, numeración, estados) y se genera el Excel.</li>
 <li><strong>Frontend (Vercel):</strong> la interfaz. Es la URL que abren las computadoras.</li>
 </ul>
 <p>Las computadoras <strong>no instalan nada</strong>: solo necesitan navegador e internet.</p>
@@ -99,17 +99,19 @@ en menos de un segundo. Para 5 computadoras es más que suficiente.</p>
 <ol>
 <li>Entra a <strong>render.com</strong> y crea cuenta (puedes usar tu GitHub).</li>
 <li><strong>New + → Web Service</strong> y conecta tu repositorio.</li>
-<li>Configura:</li>
+<li>Configura (modo <strong>Python</strong>, sin Docker — el build es liviano y rápido):</li>
 <li><strong>Root Directory:</strong> <code>backend</code></li>
-<li><strong>Language / Runtime:</strong> <em>Docker</em> (Render detecta el <code>Dockerfile</code> que ya viene incluido)</li>
+<li><strong>Language / Runtime:</strong> <em>Python 3</em></li>
+<li><strong>Build Command:</strong> <code>pip install -r requirements.txt</code></li>
+<li><strong>Start Command:</strong> <code>uvicorn app.main:app --host 0.0.0.0 --port $PORT</code></li>
 <li><strong>Instance Type:</strong> <em>Free</em></li>
 <li>En <strong>Environment</strong> agrega una variable:</li>
 <li><code>DATABASE_URL</code> = <em>(la cadena de Neon del paso 2)</em></li>
 </ol>
 <p>(La variable <code>CORS_ORIGINS</code> la pondremos en el Paso 6, cuando ya tengamos la
    URL del frontend.)
-5. <strong>Create Web Service</strong> y espera a que termine el build (instala las librerías
-   del sistema para el PDF y las dependencias de Python).
+5. <strong>Create Web Service</strong> y espera a que termine el build (instala las
+   dependencias de Python; tarda 1–2 minutos).
 6. Al terminar, copia la <strong>URL del backend</strong> (ej. <code>https://vouchers-api.onrender.com</code>)
    y ábrela en el navegador. Debe responder:</p>
 <p><code>json
@@ -177,8 +179,11 @@ eso es el siguiente paso.</p>
 <ul>
 <li><strong>Imprimir sin descargar:</strong> el botón <em>Imprimir</em> abre el voucher y manda al
   diálogo de impresión; no genera ningún archivo.</li>
-<li><strong>PDF:</strong> funciona en el servidor gracias al <code>Dockerfile</code> (no instalas nada en
-  Windows). El <em>Imprimir</em> y el <em>Excel</em> no dependen de eso.</li>
+<li><strong>PDF (opcional):</strong> la <strong>impresión directa</strong> y el <strong>Excel</strong> son las salidas
+  principales y funcionan siempre. El botón <em>Descargar PDF</em> requiere WeasyPrint
+  con librerías del sistema (pango/cairo), que no se instalan en el plan Python
+  sencillo; si lo pides ahí, responde 503 y no pasa nada. Para habilitarlo se
+  usa <code>requirements-pdf.txt</code> en un entorno que tenga esas librerías.</li>
 <li><strong>Primer acceso lento:</strong> tanto Neon como el plan gratis de Render “se duermen”
   tras un rato sin uso; el primer acceso del día puede tardar algunos segundos en
   despertar. Después va normal. Si quieres que el backend esté siempre despierto,
@@ -196,8 +201,8 @@ eso es el siguiente paso.</p>
 <li><strong>El frontend dice “Failed to fetch” o error de CORS:</strong> revisa que
   <code>CORS_ORIGINS</code> en Render sea <strong>exactamente</strong> la URL de Vercel (sin barra al
   final) y que el backend haya redeployado.</li>
-<li><strong>Al pedir PDF responde 503:</strong> el backend no se desplegó con Docker. Asegúrate
-  de que el <em>Runtime</em> en Render sea <strong>Docker</strong> (no el Python por defecto).</li>
+<li><strong>Al pedir PDF responde 503:</strong> es lo esperado en el despliegue Python sencillo
+  (el PDF es opcional). Usa <em>Imprimir</em> o <em>Excel</em>, que no dependen de eso.</li>
 <li><strong>No aparecen cuentas/proyectos:</strong> falta correr el seed (Paso 4).</li>
 <li><strong><code>VITE_API_URL</code> no toma efecto:</strong> Vite la incrusta al construir; si la cambias,
   vuelve a hacer <em>Redeploy</em> en Vercel.</li>

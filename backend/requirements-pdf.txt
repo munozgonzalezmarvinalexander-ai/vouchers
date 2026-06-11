@@ -1,0 +1,5 @@
+# Opcional: solo si quieres el botón "Descargar PDF".
+# WeasyPrint necesita librerías del sistema (pango/cairo). En despliegues
+# Python sencillos (Render Free) NO se instala; la impresión directa y el
+# Excel funcionan sin esto. Instálalo solo en un entorno con esas librerías.
+weasyprint>=60

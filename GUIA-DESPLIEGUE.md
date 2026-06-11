@@ -21,8 +21,8 @@ Tiempo estimado la primera vez: 30–40 minutos.
 - **Base de datos (Neon, PostgreSQL):** el lugar único y compartido donde se
   guardan los vouchers. Que sea uno solo es lo que permite que las 5 computadoras
   vean lo mismo.
-- **Backend (Render, con Docker):** la API que ya construimos. Aquí corren las
-  reglas (cuadre, numeración, estados) y se generan el PDF y el Excel.
+- **Backend (Render, Python):** la API que ya construimos. Aquí corren las
+  reglas (cuadre, numeración, estados) y se genera el Excel.
 - **Frontend (Vercel):** la interfaz. Es la URL que abren las computadoras.
 
 Las computadoras **no instalan nada**: solo necesitan navegador e internet.
@@ -75,17 +75,19 @@ git push -u origin main
 
 1. Entra a **render.com** y crea cuenta (puedes usar tu GitHub).
 2. **New + → Web Service** y conecta tu repositorio.
-3. Configura:
+3. Configura (modo **Python**, sin Docker — el build es liviano y rápido):
    - **Root Directory:** `backend`
-   - **Language / Runtime:** *Docker* (Render detecta el `Dockerfile` que ya viene incluido)
+   - **Language / Runtime:** *Python 3*
+   - **Build Command:** `pip install -r requirements.txt`
+   - **Start Command:** `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
    - **Instance Type:** *Free*
 4. En **Environment** agrega una variable:
    - `DATABASE_URL` = *(la cadena de Neon del paso 2)*
 
    (La variable `CORS_ORIGINS` la pondremos en el Paso 6, cuando ya tengamos la
    URL del frontend.)
-5. **Create Web Service** y espera a que termine el build (instala las librerías
-   del sistema para el PDF y las dependencias de Python).
+5. **Create Web Service** y espera a que termine el build (instala las
+   dependencias de Python; tarda 1–2 minutos).
 6. Al terminar, copia la **URL del backend** (ej. `https://vouchers-api.onrender.com`)
    y ábrela en el navegador. Debe responder:
 
@@ -169,8 +171,11 @@ En cada computadora, abre el navegador en la **URL de Vercel**. Nada más.
 
 - **Imprimir sin descargar:** el botón *Imprimir* abre el voucher y manda al
   diálogo de impresión; no genera ningún archivo.
-- **PDF:** funciona en el servidor gracias al `Dockerfile` (no instalas nada en
-  Windows). El *Imprimir* y el *Excel* no dependen de eso.
+- **PDF (opcional):** la **impresión directa** y el **Excel** son las salidas
+  principales y funcionan siempre. El botón *Descargar PDF* requiere WeasyPrint
+  con librerías del sistema (pango/cairo), que no se instalan en el plan Python
+  sencillo; si lo pides ahí, responde 503 y no pasa nada. Para habilitarlo se
+  usa `requirements-pdf.txt` en un entorno que tenga esas librerías.
 - **Primer acceso lento:** tanto Neon como el plan gratis de Render “se duermen”
   tras un rato sin uso; el primer acceso del día puede tardar algunos segundos en
   despertar. Después va normal. Si quieres que el backend esté siempre despierto,
@@ -189,8 +194,8 @@ En cada computadora, abre el navegador en la **URL de Vercel**. Nada más.
 - **El frontend dice “Failed to fetch” o error de CORS:** revisa que
   `CORS_ORIGINS` en Render sea **exactamente** la URL de Vercel (sin barra al
   final) y que el backend haya redeployado.
-- **Al pedir PDF responde 503:** el backend no se desplegó con Docker. Asegúrate
-  de que el *Runtime* en Render sea **Docker** (no el Python por defecto).
+- **Al pedir PDF responde 503:** es lo esperado en el despliegue Python sencillo
+  (el PDF es opcional). Usa *Imprimir* o *Excel*, que no dependen de eso.
 - **No aparecen cuentas/proyectos:** falta correr el seed (Paso 4).
 - **`VITE_API_URL` no toma efecto:** Vite la incrusta al construir; si la cambias,
   vuelve a hacer *Redeploy* en Vercel.
