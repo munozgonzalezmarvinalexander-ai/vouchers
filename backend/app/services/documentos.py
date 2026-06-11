@@ -29,9 +29,11 @@ _env = Environment(
 ORG = "CONACMI"
 
 
-# Dónde empieza el voucher desde el borde superior de la hoja carta.
-# El comprobante del banco va arriba; el voucher cae en la parte de abajo.
-TOPS = {"medio": "130mm", "tercio": "168mm"}
+# El voucher se ancla al fondo de la hoja y crece hacia arriba. El "formato"
+# controla el tamaño de letra, y con eso qué tanto sube:
+#   medio  -> letra más grande, ocupa ~½ hoja
+#   tercio -> letra compacta, ocupa ~⅓ hoja
+ESCALAS = {"medio": "14px", "tercio": "11px"}
 
 
 def _money(valor) -> str:
@@ -61,7 +63,7 @@ def _contexto(voucher, auto_print=False, formato="medio") -> dict:
         "revisado": voucher.revisado_por.nombre if voucher.revisado_por else "",
         "autorizado": voucher.autorizado_por.nombre if voucher.autorizado_por else "",
         "auto_print": auto_print,
-        "top": TOPS.get(formato, TOPS["medio"]),
+        "fs": ESCALAS.get(formato, ESCALAS["medio"]),
     }
 
 

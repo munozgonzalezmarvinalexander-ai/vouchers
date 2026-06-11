@@ -4,30 +4,36 @@
 <meta charset="utf-8">
 <title>Voucher {{ numero }}</title>
 <style>
-  /* Hoja carta. Margen 0: controlamos toda la posición con padding/margin en mm,
-     para que el voucher caiga en la parte de ABAJO (arriba va el comprobante del banco). */
   @page { size: 216mm 279mm; margin: 0; }
   * { box-sizing: border-box; }
-  body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: #1f3a73; font-size: 11px; }
+  body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: #1f3a73; }
 
-  /* 'top' define dónde empieza el voucher desde el borde superior:
-       medio  -> mitad inferior      tercio -> tercio inferior */
-  .voucher { padding: 0 18mm; margin-top: {{ top }}; }
+  /* Anclado al fondo de la hoja: el voucher crece hacia ARRIBA, así siempre
+     queda pegado abajo y arriba queda libre para el comprobante del banco.
+     El 'tamaño' (font-size) define qué tanto sube: medio = ~½ hoja, tercio = ~⅓.
+     text-transform pone TODO en mayúsculas. */
+  .voucher {
+    position: fixed; left: 0; right: 0; bottom: 12mm;
+    padding: 0 18mm;
+    font-size: {{ fs }};
+    text-transform: uppercase;
+  }
 
-  .concepto { text-align: center; line-height: 1.5; margin: 0 0 9mm; padding: 0 6mm; }
+  .concepto { text-align: center; line-height: 1.5; margin: 0 0 0.9em; padding: 0 6mm; }
 
   table.lineas { width: 100%; border-collapse: collapse; }
-  table.lineas td { padding: 1.5px 0; vertical-align: top; }
-  td.cod { width: 20mm; white-space: nowrap; }
+  table.lineas td { padding: 0.15em 0; vertical-align: top; }
+  td.cod { width: 22mm; white-space: nowrap; }
   td.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
-  td.debe, td.haber { width: 24mm; }
-  tr.banco td { padding-top: 7mm; }
-  tr.totales td { padding-top: 6mm; font-weight: bold; }
+  td.debe, td.haber { width: 26mm; }
+  tr.banco td { padding-top: 0.8em; }
+  tr.totales td { padding-top: 0.7em; font-weight: bold; }
 
-  .firmas { display: flex; justify-content: space-between; margin-top: 14mm; padding: 0 4mm; }
+  /* Firmas: espacio para firmar, la línea, el nombre y debajo el rol. */
+  .firmas { display: flex; justify-content: space-between; margin-top: 2em; padding: 0 4mm; }
   .firma { width: 30%; text-align: center; }
+  .firma .linea { border-top: 1px solid #1f3a73; margin: 0 4mm 0.3em; height: 1px; }
   .firma .rol { font-weight: bold; }
-  .firma .linea { border-top: 1px solid #1f3a73; margin: 11mm 4mm 2mm; height: 1px; }
 </style>
 {% if auto_print %}<script>window.addEventListener('load', function () { window.print(); });</script>{% endif %}
 </head>
@@ -52,9 +58,9 @@
     </table>
 
     <div class="firmas">
-      <div class="firma"><div class="rol">Elaborado Por:</div><div class="linea"></div><div class="nombre">{{ elaborado }}</div></div>
-      <div class="firma"><div class="rol">Revisado Por:</div><div class="linea"></div><div class="nombre">{{ revisado }}</div></div>
-      <div class="firma"><div class="rol">Autorizado Por:</div><div class="linea"></div><div class="nombre">{{ autorizado }}</div></div>
+      <div class="firma"><div class="linea"></div><div class="nombre">{{ elaborado }}</div><div class="rol">Elaborado Por:</div></div>
+      <div class="firma"><div class="linea"></div><div class="nombre">{{ revisado }}</div><div class="rol">Revisado Por:</div></div>
+      <div class="firma"><div class="linea"></div><div class="nombre">{{ autorizado }}</div><div class="rol">Autorizado Por:</div></div>
     </div>
   </div>
 </body>
