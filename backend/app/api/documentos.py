@@ -15,6 +15,7 @@ from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app.models import Voucher
+from app.services import configuracion as cfg
 from app.services import documentos as doc
 
 router = APIRouter(prefix="/vouchers", tags=["Documentos"])
@@ -28,18 +29,20 @@ def _voucher(db: Session, voucher_id: int) -> Voucher:
 
 
 @router.get("/{voucher_id}/html", response_class=HTMLResponse)
-def voucher_html(voucher_id: int, imprimir: bool = False, formato: str = "medio", db: Session = Depends(get_db)):
+def voucher_html(voucher_id: int, imprimir: bool = False, db: Session = Depends(get_db)):
     """Vista imprimible. Con ?imprimir=1 dispara la impresión del navegador.
-    formato = medio (mitad inferior) | tercio (tercio inferior)."""
+    Usa los ajustes guardados en Configuración de impresión."""
     v = _voucher(db, voucher_id)
-    return HTMLResponse(doc.render_html(v, auto_print=imprimir, formato=formato))
+    config = cfg.como_dict(cfg.obtener(db))
+    return HTMLResponse(doc.render_html(v, config, auto_print=imprimir))
 
 
 @router.get("/{voucher_id}/pdf")
-def voucher_pdf(voucher_id: int, descargar: bool = False, formato: str = "medio", db: Session = Depends(get_db)):
+def voucher_pdf(voucher_id: int, descargar: bool = False, db: Session = Depends(get_db)):
     v = _voucher(db, voucher_id)
+    config = cfg.como_dict(cfg.obtener(db))
     try:
-        pdf = doc.render_pdf(v, formato=formato)
+        pdf = doc.render_pdf(v, config)
     except RuntimeError as e:
         raise HTTPException(503, str(e))
     disposicion = "attachment" if descargar else "inline"

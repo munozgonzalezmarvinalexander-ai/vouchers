@@ -176,3 +176,14 @@ class TotalPartidaOut(BaseModel):
     nombre: str
     total: Decimal
     veces: int
+
+
+class ConfiguracionImpresion(BaseModel):
+    """Ajustes de impresión del voucher (en pt y mm)."""
+    fuente_pt: float = 12
+    espacio_concepto_mm: float = 14
+    espacio_firmas_mm: float = 28
+    margen_inferior_mm: float = 15
+    margen_lateral_mm: float = 18
+
+    model_config = ConfigDict(from_attributes=True)

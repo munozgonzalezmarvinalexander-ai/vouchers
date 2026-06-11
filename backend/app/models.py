@@ -166,3 +166,19 @@ class Auditoria(Base):
 
     def __repr__(self) -> str:
         return f"<Auditoria {self.accion} voucher={self.voucher_id}>"
+
+
+class Configuracion(Base):
+    """Ajustes de impresión del voucher (una sola fila, id=1). Compartidos por
+    todas las computadoras: lo que se guarda aquí aplica a todos."""
+    __tablename__ = "configuracion"
+
+    id: Mapped[int] = mapped_column(primary_key=True)  # siempre 1
+    fuente_pt: Mapped[float] = mapped_column(default=12)
+    espacio_concepto_mm: Mapped[float] = mapped_column(default=14)
+    espacio_firmas_mm: Mapped[float] = mapped_column(default=28)
+    margen_inferior_mm: Mapped[float] = mapped_column(default=15)
+    margen_lateral_mm: Mapped[float] = mapped_column(default=18)
+
+    def __repr__(self) -> str:
+        return f"<Configuracion fuente={self.fuente_pt}pt>"

@@ -28,6 +28,14 @@ export default function Layout({ children }) {
               Reportes
             </Link>
             <Link
+              to="/configuracion"
+              className={`rounded-md px-3 py-1.5 ${
+                pathname === '/configuracion' ? 'bg-brand-50 text-brand-700' : 'text-slate-600 hover:bg-slate-100'
+              }`}
+            >
+              Impresión
+            </Link>
+            <Link
               to="/nuevo"
               className="rounded-md bg-brand px-3 py-1.5 text-white hover:bg-brand-700"
             >

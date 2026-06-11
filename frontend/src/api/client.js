@@ -47,6 +47,9 @@ export const api = {
     req('/ortografia/revisar', { method: 'POST', body: JSON.stringify({ texto }) }),
   libroVouchers: (filtros) => req(`/reportes/libro-vouchers?${query(filtros)}`),
   totalesPorPartida: (filtros) => req(`/reportes/totales-por-partida?${query(filtros)}`),
+  getConfiguracion: () => req('/configuracion'),
+  guardarConfiguracion: (datos) =>
+    req('/configuracion', { method: 'PUT', body: JSON.stringify(datos) }),
 }
 
 // URL del libro de vouchers en Excel (se abre/descarga directo).
@@ -57,9 +60,11 @@ export const libroExcelUrl = (filtros = {}) =>
 //  - imprimir: muestra el voucher y abre el diálogo de impresión (no descarga).
 //  - pdf / excel: descargan el archivo.
 export const docUrls = (id) => ({
-  imprimirMedio: `${BASE}/vouchers/${id}/html?imprimir=1&formato=medio`,
-  imprimirTercio: `${BASE}/vouchers/${id}/html?imprimir=1&formato=tercio`,
-  vistaPrevia: `${BASE}/vouchers/${id}/html?formato=medio`,
-  pdf: `${BASE}/vouchers/${id}/pdf?descargar=1&formato=medio`,
+  imprimir: `${BASE}/vouchers/${id}/html?imprimir=1`,
+  vistaPrevia: `${BASE}/vouchers/${id}/html`,
+  pdf: `${BASE}/vouchers/${id}/pdf?descargar=1`,
   excel: `${BASE}/vouchers/${id}/excel`,
 })
+
+// URL de la vista previa en vivo de la configuración (voucher de ejemplo).
+export const previewConfigUrl = (params) => `${BASE}/configuracion/preview?${query(params)}`

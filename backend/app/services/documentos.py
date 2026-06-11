@@ -29,11 +29,10 @@ _env = Environment(
 ORG = "CONACMI"
 
 
-# El voucher se ancla al fondo de la hoja y crece hacia arriba. El "formato"
-# controla el tamaño de letra, y con eso qué tanto sube:
-#   medio  -> letra más grande, ocupa ~½ hoja
-#   tercio -> letra compacta, ocupa ~⅓ hoja
-ESCALAS = {"medio": "14px", "tercio": "11px"}
+from app.services.configuracion import estilos
+
+# El voucher se ancla al fondo y crece hacia arriba. El tamaño y los espacios
+# vienen de la Configuración de impresión (services/configuracion.py).
 
 
 def _money(valor) -> str:
@@ -42,7 +41,7 @@ def _money(valor) -> str:
     return f"{n:,.2f}" if n else ""
 
 
-def _contexto(voucher, auto_print=False, formato="medio") -> dict:
+def _contexto(voucher, auto_print=False) -> dict:
     lineas = [
         {
             "codigo": d.cuenta.codigo if d.cuenta else "",
@@ -63,16 +62,16 @@ def _contexto(voucher, auto_print=False, formato="medio") -> dict:
         "revisado": voucher.revisado_por.nombre if voucher.revisado_por else "",
         "autorizado": voucher.autorizado_por.nombre if voucher.autorizado_por else "",
         "auto_print": auto_print,
-        "fs": ESCALAS.get(formato, ESCALAS["medio"]),
     }
 
 
-def render_html(voucher, auto_print: bool = False, formato: str = "medio") -> str:
-    return _env.get_template("voucher.html").render(**_contexto(voucher, auto_print, formato))
+def render_html(voucher, config: dict, auto_print: bool = False) -> str:
+    ctx = {**_contexto(voucher, auto_print), **estilos(config)}
+    return _env.get_template("voucher.html").render(**ctx)
 
 
-def render_pdf(voucher, formato: str = "medio") -> bytes:
-    html = render_html(voucher, auto_print=False, formato=formato)
+def render_pdf(voucher, config: dict) -> bytes:
+    html = render_html(voucher, config, auto_print=False)
     try:
         from weasyprint import HTML  # import perezoso (ver nota arriba)
     except Exception as e:  # noqa: BLE001
@@ -81,6 +80,29 @@ def render_pdf(voucher, formato: str = "medio") -> bytes:
             "(falta WeasyPrint o sus librerías). La impresión directa y el Excel sí funcionan."
         ) from e
     return HTML(string=html).write_pdf()
+
+
+# Voucher de muestra para la vista previa de la pantalla de configuración.
+_MUESTRA = {
+    "numero": "EJEMPLO",
+    "concepto": "PAGO DE COMBUSTIBLE Y ALIMENTACION PARA FACILITADORA COMUNITARIA, "
+                "VISITAS DE MONITOREO Y SESIONES DE RED COMUNITARIA MES DE MAYO",
+    "lineas": [
+        {"codigo": "61201294", "descripcion": "Dietas 1 coordinadora", "debe": "652.00", "haber": "", "es_banco": False},
+        {"codigo": "61201086", "descripcion": "Combustible 1 coordinadora", "debe": "603.02", "haber": "", "es_banco": False},
+        {"codigo": "11102012", "descripcion": "Banco Industrial, S.A. 017-016830-2", "debe": "", "haber": "1,255.02", "es_banco": True},
+    ],
+    "total_debe": "1,255.02",
+    "total_haber": "1,255.02",
+    "elaborado": "Carina Lopez",
+    "revisado": "Haroldo Oquendo",
+    "autorizado": "Miguel Lopez",
+}
+
+
+def render_muestra(config: dict) -> str:
+    ctx = {**_MUESTRA, "auto_print": False, **estilos(config)}
+    return _env.get_template("voucher.html").render(**ctx)
 
 
 def generar_excel(voucher) -> bytes:

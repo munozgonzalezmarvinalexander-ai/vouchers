@@ -8,29 +8,26 @@
   * { box-sizing: border-box; }
   body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: #1f3a73; }
 
-  /* Anclado al fondo de la hoja: el voucher crece hacia ARRIBA, así siempre
-     queda pegado abajo y arriba queda libre para el comprobante del banco.
-     El 'tamaño' (font-size) define qué tanto sube: medio = ~½ hoja, tercio = ~⅓.
-     text-transform pone TODO en mayúsculas. */
+  /* Anclado al fondo de la hoja, crece hacia arriba. Tamaño y espacios vienen
+     de la Configuración de impresión (ajustables y guardados). TODO en mayúsculas. */
   .voucher {
-    position: fixed; left: 0; right: 0; bottom: 12mm;
-    padding: 0 18mm;
+    position: fixed; left: 0; right: 0; bottom: {{ mb }};
+    padding: 0 {{ ml }};
     font-size: {{ fs }};
     text-transform: uppercase;
   }
 
-  .concepto { text-align: center; line-height: 1.5; margin: 0 0 0.9em; padding: 0 6mm; }
+  .concepto { text-align: center; line-height: 1.5; margin: 0 0 {{ g_concepto }}; padding: 0 6mm; }
 
   table.lineas { width: 100%; border-collapse: collapse; }
-  table.lineas td { padding: 0.15em 0; vertical-align: top; }
-  td.cod { width: 22mm; white-space: nowrap; }
+  table.lineas td { padding: 0.18em 0; vertical-align: top; }
+  td.cod { width: 24mm; white-space: nowrap; }
   td.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
-  td.debe, td.haber { width: 26mm; }
-  tr.banco td { padding-top: 0.8em; }
-  tr.totales td { padding-top: 0.7em; font-weight: bold; }
+  td.debe, td.haber { width: 28mm; }
+  tr.banco td { padding-top: 0.9em; }
+  tr.totales td { padding-top: 0.8em; font-weight: bold; }
 
-  /* Firmas: espacio para firmar, la línea, el nombre y debajo el rol. */
-  .firmas { display: flex; justify-content: space-between; margin-top: 2em; padding: 0 4mm; }
+  .firmas { display: flex; justify-content: space-between; margin-top: {{ g_firmas }}; padding: 0 4mm; }
   .firma { width: 30%; text-align: center; }
   .firma .linea { border-top: 1px solid #1f3a73; margin: 0 4mm 0.3em; height: 1px; }
   .firma .rol { font-weight: bold; }

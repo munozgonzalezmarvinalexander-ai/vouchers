@@ -16,7 +16,7 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import cuentas, documentos, firmantes, ortografia, proyectos, reportes, vouchers
+from app.api import configuracion, cuentas, documentos, firmantes, ortografia, proyectos, reportes, vouchers
 from app.database import Base, engine
 
 
@@ -58,5 +58,6 @@ app.include_router(proyectos.router)
 app.include_router(firmantes.router)
 app.include_router(vouchers.router)
 app.include_router(documentos.router)
+app.include_router(configuracion.router)
 app.include_router(reportes.router)
 app.include_router(ortografia.router)
